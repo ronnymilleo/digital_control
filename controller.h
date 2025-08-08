@@ -1,7 +1,8 @@
 #pragma once
 
-class Controller {
-public:
+class Controller
+{
+  public:
     virtual ~Controller() = default;
 
     // Set the desired reference/setpoint r[k]

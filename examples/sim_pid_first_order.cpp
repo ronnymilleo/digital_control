@@ -1,19 +1,20 @@
-#include <iostream>
 #include <fstream>
 #include <iomanip>
+#include <iostream>
 
 #include "pid.h"
 #include "plant.h"
 
-int main() {
+int main()
+{
     // Simulation parameters
-    const double dt = 0.01;     // 10 ms
-    const double t_end = 10.0;  // 10 seconds
-    const double r_step = 1.0;  // desired setpoint
+    const double dt = 0.01;    // 10 ms
+    const double t_end = 10.0; // 10 seconds
+    const double r_step = 1.0; // desired setpoint
 
     // Controller setup
     PID pid;
-    pid.set_gains(1.0, 0.5, 0.1);      // example gains
+    pid.set_gains(1.0, 0.5, 0.1);       // example gains
     pid.set_output_limits(-10.0, 10.0); // actuator saturation
     pid.set_derivative_filter(0.5);     // some filtering
     pid.set_setpoint(r_step);
@@ -26,18 +27,17 @@ int main() {
 
     double y = 0.0;
 
-    for (double t = 0.0; t <= t_end + 1e-12; t += dt) {
+    for (double t = 0.0; t <= t_end + 1e-12; t += dt)
+    {
         // Controller computes control from measurement y
         double u = pid.update(y, dt);
 
         // Plant evolves
         y = plant.step(u, dt);
 
-        csv << std::fixed << std::setprecision(6)
-            << t << "," << r_step << "," << y << "," << u << "\n";
+        csv << std::fixed << std::setprecision(6) << t << "," << r_step << "," << y << "," << u << "\n";
     }
 
     std::cout << "Simulation complete. Output written to sim_pid_first_order.csv\n";
     return 0;
 }
-

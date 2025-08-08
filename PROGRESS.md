@@ -53,3 +53,8 @@ This will produce sim_pid_first_order.csv in the current working directory with 
 - Add a simple tuner (e.g., relay auto-tune) as a separate component.
 - Add a small plotting script (Python/matplotlib) to visualize results.
 
+## Updates
+
+- Added SecondOrderPlant (mass-spring-damper) in plant.h and new example examples/sim_pid_second_order.cpp.
+- CMake updated with sim_pid_second_order target.
+

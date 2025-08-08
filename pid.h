@@ -2,8 +2,9 @@
 
 #include "controller.h"
 
-class PID : public Controller {
-public:
+class PID : public Controller
+{
+  public:
     PID();
     ~PID();
 
@@ -15,23 +16,23 @@ public:
     double update(double y, double dt) override; // returns u
     void reset() override;
 
-private:
+  private:
     // Gains
     double kp_ = 0.0;
     double ki_ = 0.0;
     double kd_ = 0.0;
 
     // State
-    double r_ = 0.0;        // setpoint
-    double integ_ = 0.0;    // integral term state
-    double y_prev_ = 0.0;   // previous measurement for derivative
-    double d_prev_ = 0.0;   // filtered derivative state
-    double u_prev_ = 0.0;   // last saturated output
+    double r_ = 0.0;      // setpoint
+    double integ_ = 0.0;  // integral term state
+    double y_prev_ = 0.0; // previous measurement for derivative
+    double d_prev_ = 0.0; // filtered derivative state
+    double u_prev_ = 0.0; // last saturated output
 
     // Config
     double umin_ = -1e9;
     double umax_ = 1e9;
-    double alpha_ = 1.0;    // derivative filter blending factor
+    double alpha_ = 1.0; // derivative filter blending factor
 
     bool first_ = true;
 };

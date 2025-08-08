@@ -19,6 +19,12 @@
 },
 {
   "directory": "/Users/ronnymilleo/Develop/cpp/digital_control/build/debug",
+  "command": "/usr/bin/c++  -I/Users/ronnymilleo/Develop/cpp/digital_control -O3 -DNDEBUG -std=c++17 -arch arm64 -Wall -Wextra -Wpedantic -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wmissing-declarations -Wmissing-include-dirs -Wold-style-cast -Woverloaded-virtual -Wredundant-decls -Wshadow -Wsign-conversion -Wsign-promo -Wstrict-overflow=5 -Wswitch-default -Wundef -o CMakeFiles/sim_pid_second_order.dir/examples/sim_pid_second_order.cpp.o -c /Users/ronnymilleo/Develop/cpp/digital_control/examples/sim_pid_second_order.cpp",
+  "file": "/Users/ronnymilleo/Develop/cpp/digital_control/examples/sim_pid_second_order.cpp",
+  "output": "CMakeFiles/sim_pid_second_order.dir/examples/sim_pid_second_order.cpp.o"
+},
+{
+  "directory": "/Users/ronnymilleo/Develop/cpp/digital_control/build/debug",
   "command": "/usr/bin/c++  -I/Users/ronnymilleo/Develop/cpp/digital_control -isystem /Users/ronnymilleo/Develop/cpp/digital_control/vendor/googletest/googletest/include -isystem /Users/ronnymilleo/Develop/cpp/digital_control/vendor/googletest/googletest -O3 -DNDEBUG -std=c++17 -arch arm64 -Wall -Wextra -Wpedantic -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wmissing-declarations -Wmissing-include-dirs -Wold-style-cast -Woverloaded-virtual -Wredundant-decls -Wshadow -Wsign-conversion -Wsign-promo -Wstrict-overflow=5 -Wswitch-default -Wundef -o CMakeFiles/digital_control_tests.dir/tests/test_pid.cpp.o -c /Users/ronnymilleo/Develop/cpp/digital_control/tests/test_pid.cpp",
   "file": "/Users/ronnymilleo/Develop/cpp/digital_control/tests/test_pid.cpp",
   "output": "CMakeFiles/digital_control_tests.dir/tests/test_pid.cpp.o"
