@@ -4,6 +4,10 @@
 
 #include "pid.h"
 #include "plant.h"
+#include "tuner.h"
+#include <filesystem>
+#include <memory>
+#include <nlohmann/json.hpp>
 
 int main()
 {
@@ -12,11 +16,44 @@ int main()
     const double t_end = 10.0; // 10 seconds
     const double r_step = 1.0; // desired setpoint
 
-    // Controller setup
+    // Load tuned gains from JSON if available, otherwise tune and save
+    nlohmann::json j;
+    const std::string json_path = "tuned_first_order.json";
+    TuneResult tuned{};
+    if (std::filesystem::exists(json_path))
+    {
+        std::ifstream jf(json_path);
+        jf >> j;
+        if (j.contains("kp") && j.contains("ki") && j.contains("kd"))
+        {
+            tuned.kp = j["kp"].get<double>();
+            tuned.ki = j["ki"].get<double>();
+            tuned.kd = j["kd"].get<double>();
+            tuned.score = j.value("score", 0.0);
+        }
+        else
+        {
+            auto factory = []() { return std::make_unique<FirstOrderPlant>(1.0, 1.0, 0.0); };
+            tuned = auto_tune_pid_step_default(factory, r_step, dt, t_end, -10.0, 10.0, 0.5);
+            j = {{"kp", tuned.kp}, {"ki", tuned.ki}, {"kd", tuned.kd}, {"score", tuned.score}};
+            std::ofstream jo(json_path);
+            jo << j.dump(2) << std::endl;
+        }
+    }
+    else
+    {
+        auto factory = []() { return std::make_unique<FirstOrderPlant>(1.0, 1.0, 0.0); };
+        tuned = auto_tune_pid_step_default(factory, r_step, dt, t_end, -10.0, 10.0, 0.5);
+        j = {{"kp", tuned.kp}, {"ki", tuned.ki}, {"kd", tuned.kd}, {"score", tuned.score}};
+        std::ofstream jo(json_path);
+        jo << j.dump(2) << std::endl;
+    }
+
+    // Controller setup using tuned gains
     PID pid;
-    pid.set_gains(1.0, 0.5, 0.1);       // example gains
+    pid.set_gains(tuned.kp, tuned.ki, tuned.kd);
     pid.set_output_limits(-10.0, 10.0); // actuator saturation
-    pid.set_derivative_filter(0.5);     // some filtering
+    pid.set_derivative_filter(0.5);
     pid.set_setpoint(r_step);
 
     // Plant setup (K=1, tau=1, y0=0)
@@ -29,15 +66,13 @@ int main()
 
     for (double t = 0.0; t <= t_end + 1e-12; t += dt)
     {
-        // Controller computes control from measurement y
         double u = pid.update(y, dt);
-
-        // Plant evolves
         y = plant.step(u, dt);
-
         csv << std::fixed << std::setprecision(6) << t << "," << r_step << "," << y << "," << u << "\n";
     }
 
+    std::cout << "First-order tuned gains: Kp=" << tuned.kp << ", Ki=" << tuned.ki << ", Kd=" << tuned.kd
+              << " (score=" << tuned.score << ")\n";
     std::cout << "Simulation complete. Output written to sim_pid_first_order.csv\n";
     return 0;
 }

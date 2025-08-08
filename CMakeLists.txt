@@ -41,6 +41,8 @@ set(DC_FORMAT_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/pid.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/plant.h
     ${CMAKE_CURRENT_SOURCE_DIR}/plant.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/tuner.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/tuner.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/examples/sim_pid_first_order.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/examples/sim_pid_second_order.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/tests/test_pid.cpp
@@ -100,6 +102,7 @@ endif()
 add_library(digital_control STATIC
     pid.cpp
     plant.cpp
+    tuner.cpp
 )
 add_dependencies(digital_control format)
 
@@ -119,6 +122,7 @@ target_include_directories(digital_control
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
         $<INSTALL_INTERFACE:include>
+        ${CMAKE_CURRENT_SOURCE_DIR}/vendor/nlohmann_json/single_include
 )
 
 # Example executables
@@ -166,6 +170,7 @@ install(FILES
     controller.h
     pid.h
     plant.h
+    tuner.h
     DESTINATION include
 )
 
