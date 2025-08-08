@@ -24,12 +24,20 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Options
-option(DC_BUILD_TESTS "Build unit tests" OFF)
+option(DC_BUILD_TESTS "Build unit tests" ON)
 option(DC_BUILD_EXAMPLES "Build example programs" ON)
 option(DC_ENABLE_WARNINGS "Enable compiler warnings" ON)
 option(DC_WARNINGS_AS_ERRORS "Treat warnings as errors" OFF)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# Copy compile_commands.json to source dir for clangd after each build
+add_custom_target(copy_compile_commands ALL
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            ${CMAKE_BINARY_DIR}/compile_commands.json
+            ${CMAKE_SOURCE_DIR}/compile_commands.json
+    COMMENT "Copying compile_commands.json to source dir for clangd"
+)
 
 # Output dirs
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/${CMAKE_BUILD_TYPE}/bin")
@@ -114,6 +122,21 @@ install(FILES
     plant.h
     DESTINATION include
 )
+
+# Tests
+if(DC_BUILD_TESTS)
+    enable_testing()
+    # Bring in vendored GoogleTest
+    add_subdirectory(vendor/googletest)
+    add_executable(digital_control_tests
+        tests/test_pid.cpp
+    )
+    target_link_libraries(digital_control_tests PRIVATE gtest_main digital_control)
+    if(DC_ENABLE_WARNINGS)
+        target_compile_options(digital_control_tests PRIVATE ${DC_WARNING_FLAGS})
+    endif()
+    add_test(NAME digital_control_tests COMMAND digital_control_tests)
+endif()
 
 # Summary
 message(STATUS "")
