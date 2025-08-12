@@ -2,6 +2,7 @@ build/
 release/
 debug/
 .cache/
+.venv/
 compile_commands.json
 *.png
 *.csv

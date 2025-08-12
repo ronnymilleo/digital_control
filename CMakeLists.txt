@@ -37,6 +37,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 find_program(CLANG_FORMAT NAMES clang-format)
 set(DC_FORMAT_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/controller.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/exceptions.h
     ${CMAKE_CURRENT_SOURCE_DIR}/pid.h
     ${CMAKE_CURRENT_SOURCE_DIR}/pid.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/plant.h
@@ -157,22 +158,6 @@ if(DC_BUILD_EXAMPLES)
         OUTPUT_NAME "sim_pid_second_order"
     )
 endif()
-
-# Install
-install(TARGETS digital_control
-    EXPORT DigitalControlTargets
-    ARCHIVE DESTINATION lib
-    LIBRARY DESTINATION lib
-    RUNTIME DESTINATION bin
-)
-
-install(FILES
-    controller.h
-    pid.h
-    plant.h
-    tuner.h
-    DESTINATION include
-)
 
 # Tests
 if(DC_BUILD_TESTS)

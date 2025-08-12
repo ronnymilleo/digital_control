@@ -1,11 +1,13 @@
 #include "gtest/gtest.h"
 
+#include "exceptions.h"
 #include "pid.h"
 #include "plant.h"
+#include <memory>
 
 TEST(PID, ZeroGainsProducesZeroOutput)
 {
-    PID pid;
+    DigitalControl::PID pid;
     pid.set_gains(0.0, 0.0, 0.0);
     pid.set_setpoint(1.0);
     pid.set_output_limits(-100.0, 100.0);
@@ -15,7 +17,7 @@ TEST(PID, ZeroGainsProducesZeroOutput)
 
 TEST(PID, ProportionalOnlyRespondsToError)
 {
-    PID pid;
+    DigitalControl::PID pid;
     pid.set_gains(2.0, 0.0, 0.0);
     pid.set_setpoint(1.0);
     pid.set_output_limits(-100.0, 100.0);
@@ -31,7 +33,7 @@ TEST(PID, ProportionalOnlyRespondsToError)
 
 TEST(PID, IntegratorEliminatesSteadyStateError)
 {
-    PID pid;
+    DigitalControl::PID pid;
     pid.set_gains(0.0, 1.0, 0.0); // pure I
     pid.set_setpoint(1.0);
     pid.set_output_limits(-100.0, 100.0);
@@ -49,7 +51,7 @@ TEST(PID, IntegratorEliminatesSteadyStateError)
 
 TEST(PID, DerivativeOnMeasurementZeroOnFirstStep)
 {
-    PID pid;
+    DigitalControl::PID pid;
     pid.set_gains(0.0, 0.0, 1.0);
     pid.set_setpoint(0.0);
 
@@ -63,9 +65,38 @@ TEST(PID, DerivativeOnMeasurementZeroOnFirstStep)
     EXPECT_NEAR(u2, -100.0, 1e-9);
 }
 
+TEST(PID, FactoryFunctionCreatesValidController)
+{
+    auto pid = DigitalControl::make_pid(1.0, 0.5, 0.1);
+    ASSERT_NE(pid, nullptr);
+    EXPECT_EQ(pid->get_kp(), 1.0);
+    EXPECT_EQ(pid->get_ki(), 0.5);
+    EXPECT_EQ(pid->get_kd(), 0.1);
+}
+
+TEST(PID, MoveSemantics)
+{
+    DigitalControl::PID pid1(1.0, 2.0, 3.0);
+    pid1.set_setpoint(5.0);
+
+    DigitalControl::PID pid2(std::move(pid1));
+    EXPECT_EQ(pid2.get_kp(), 1.0);
+    EXPECT_EQ(pid2.get_ki(), 2.0);
+    EXPECT_EQ(pid2.get_kd(), 3.0);
+    EXPECT_EQ(pid2.get_setpoint(), 5.0);
+}
+
+TEST(PID, ExceptionOnInvalidGains)
+{
+    DigitalControl::PID pid;
+    EXPECT_THROW(pid.set_gains(-1.0, 0.0, 0.0), DigitalControl::InvalidParameterException);
+    EXPECT_THROW(pid.set_gains(0.0, -1.0, 0.0), DigitalControl::InvalidParameterException);
+    EXPECT_THROW(pid.set_gains(0.0, 0.0, -1.0), DigitalControl::InvalidParameterException);
+}
+
 TEST(Plant, FirstOrderStepsTowardKTimesU)
 {
-    FirstOrderPlant plant(2.0, 1.0, 0.0);
+    DigitalControl::FirstOrderPlant plant(2.0, 1.0, 0.0);
     const double dt = 0.01;
     const double u = 1.0;
     // Over time, y should approach K*u = 2.0
@@ -84,7 +115,7 @@ TEST(Plant, SecondOrderConvergesToKOverKspringTimesU)
     const double b = 0.8;
     const double kspring = 5.0;
     const double K = 2.0;
-    SecondOrderPlant plant(m, b, kspring, K, 0.0, 0.0);
+    DigitalControl::SecondOrderPlant plant(m, b, kspring, K, 0.0, 0.0);
 
     const double dt = 0.001; // smaller step for better integration
     const double u = 1.0;
@@ -98,4 +129,34 @@ TEST(Plant, SecondOrderConvergesToKOverKspringTimesU)
 
     // Expect close to steady-state value
     EXPECT_NEAR(y, expected, 5e-3);
+}
+
+TEST(Plant, FactoryFunctions)
+{
+    auto plant1 = DigitalControl::make_first_order_plant(2.0, 1.5, 0.5);
+    ASSERT_NE(plant1, nullptr);
+    EXPECT_EQ(plant1->get_gain(), 2.0);
+    EXPECT_EQ(plant1->get_time_constant(), 1.5);
+    EXPECT_EQ(plant1->get_initial_value(), 0.5);
+
+    auto plant2 = DigitalControl::make_second_order_plant(1.0, 0.5, 4.0, 2.0);
+    ASSERT_NE(plant2, nullptr);
+    EXPECT_EQ(plant2->get_mass(), 1.0);
+    EXPECT_EQ(plant2->get_damping(), 0.5);
+    EXPECT_EQ(plant2->get_stiffness(), 4.0);
+    EXPECT_EQ(plant2->get_gain(), 2.0);
+}
+
+TEST(Plant, ResetFunctionality)
+{
+    DigitalControl::FirstOrderPlant plant(1.0, 1.0, 5.0);
+    EXPECT_EQ(plant.get_output(), 5.0);
+
+    // Step the plant
+    plant.step(1.0, 0.1);
+    EXPECT_NE(plant.get_output(), 5.0);
+
+    // Reset should restore initial condition
+    plant.reset();
+    EXPECT_EQ(plant.get_output(), 5.0);
 }

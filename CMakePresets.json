@@ -24,6 +24,7 @@
     {
       "name": "clang-debug",
       "displayName": "Clang Debug",
+      "generator": "Ninja",
       "binaryDir": "${sourceDir}/build/clang-debug",
       "cacheVariables": {
         "CMAKE_C_COMPILER": "clang",
@@ -35,6 +36,7 @@
     {
       "name": "clang-release",
       "displayName": "Clang Release",
+      "generator": "Ninja",
       "binaryDir": "${sourceDir}/build/clang-release",
       "cacheVariables": {
         "CMAKE_C_COMPILER": "clang",

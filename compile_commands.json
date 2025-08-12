@@ -1,56 +1,62 @@
 [
 {
-  "directory": "/Users/ronnymilleo/Develop/cpp/digital_control/build/debug",
-  "command": "/usr/bin/c++  -I/Users/ronnymilleo/Develop/cpp/digital_control -O3 -DNDEBUG -std=c++17 -arch arm64 -Wall -Wextra -Wpedantic -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wmissing-declarations -Wmissing-include-dirs -Wold-style-cast -Woverloaded-virtual -Wredundant-decls -Wshadow -Wsign-conversion -Wsign-promo -Wstrict-overflow=5 -Wswitch-default -Wundef -o CMakeFiles/digital_control.dir/pid.cpp.o -c /Users/ronnymilleo/Develop/cpp/digital_control/pid.cpp",
-  "file": "/Users/ronnymilleo/Develop/cpp/digital_control/pid.cpp",
-  "output": "CMakeFiles/digital_control.dir/pid.cpp.o"
+  "directory": "D:/Develop/cpp/digital_control/build/clang-debug",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -ID:/Develop/cpp/digital_control -ID:/Develop/cpp/digital_control/vendor/nlohmann_json/single_include -O0 -std=c++17 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -g -Xclang -gcodeview -Wall -Wextra -Wpedantic -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wmissing-declarations -Wmissing-include-dirs -Wold-style-cast -Woverloaded-virtual -Wredundant-decls -Wshadow -Wsign-conversion -Wsign-promo -Wstrict-overflow=5 -Wswitch-default -Wundef -o CMakeFiles\\digital_control.dir\\pid.cpp.obj -c D:\\Develop\\cpp\\digital_control\\pid.cpp",
+  "file": "D:\\Develop\\cpp\\digital_control\\pid.cpp",
+  "output": "CMakeFiles\\digital_control.dir\\pid.cpp.obj"
 },
 {
-  "directory": "/Users/ronnymilleo/Develop/cpp/digital_control/build/debug",
-  "command": "/usr/bin/c++  -I/Users/ronnymilleo/Develop/cpp/digital_control -O3 -DNDEBUG -std=c++17 -arch arm64 -Wall -Wextra -Wpedantic -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wmissing-declarations -Wmissing-include-dirs -Wold-style-cast -Woverloaded-virtual -Wredundant-decls -Wshadow -Wsign-conversion -Wsign-promo -Wstrict-overflow=5 -Wswitch-default -Wundef -o CMakeFiles/digital_control.dir/plant.cpp.o -c /Users/ronnymilleo/Develop/cpp/digital_control/plant.cpp",
-  "file": "/Users/ronnymilleo/Develop/cpp/digital_control/plant.cpp",
-  "output": "CMakeFiles/digital_control.dir/plant.cpp.o"
+  "directory": "D:/Develop/cpp/digital_control/build/clang-debug",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -ID:/Develop/cpp/digital_control -ID:/Develop/cpp/digital_control/vendor/nlohmann_json/single_include -O0 -std=c++17 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -g -Xclang -gcodeview -Wall -Wextra -Wpedantic -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wmissing-declarations -Wmissing-include-dirs -Wold-style-cast -Woverloaded-virtual -Wredundant-decls -Wshadow -Wsign-conversion -Wsign-promo -Wstrict-overflow=5 -Wswitch-default -Wundef -o CMakeFiles\\digital_control.dir\\plant.cpp.obj -c D:\\Develop\\cpp\\digital_control\\plant.cpp",
+  "file": "D:\\Develop\\cpp\\digital_control\\plant.cpp",
+  "output": "CMakeFiles\\digital_control.dir\\plant.cpp.obj"
 },
 {
-  "directory": "/Users/ronnymilleo/Develop/cpp/digital_control/build/debug",
-  "command": "/usr/bin/c++  -I/Users/ronnymilleo/Develop/cpp/digital_control -O3 -DNDEBUG -std=c++17 -arch arm64 -Wall -Wextra -Wpedantic -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wmissing-declarations -Wmissing-include-dirs -Wold-style-cast -Woverloaded-virtual -Wredundant-decls -Wshadow -Wsign-conversion -Wsign-promo -Wstrict-overflow=5 -Wswitch-default -Wundef -o CMakeFiles/sim_pid_first_order.dir/examples/sim_pid_first_order.cpp.o -c /Users/ronnymilleo/Develop/cpp/digital_control/examples/sim_pid_first_order.cpp",
-  "file": "/Users/ronnymilleo/Develop/cpp/digital_control/examples/sim_pid_first_order.cpp",
-  "output": "CMakeFiles/sim_pid_first_order.dir/examples/sim_pid_first_order.cpp.o"
+  "directory": "D:/Develop/cpp/digital_control/build/clang-debug",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -ID:/Develop/cpp/digital_control -ID:/Develop/cpp/digital_control/vendor/nlohmann_json/single_include -O0 -std=c++17 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -g -Xclang -gcodeview -Wall -Wextra -Wpedantic -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wmissing-declarations -Wmissing-include-dirs -Wold-style-cast -Woverloaded-virtual -Wredundant-decls -Wshadow -Wsign-conversion -Wsign-promo -Wstrict-overflow=5 -Wswitch-default -Wundef -o CMakeFiles\\digital_control.dir\\tuner.cpp.obj -c D:\\Develop\\cpp\\digital_control\\tuner.cpp",
+  "file": "D:\\Develop\\cpp\\digital_control\\tuner.cpp",
+  "output": "CMakeFiles\\digital_control.dir\\tuner.cpp.obj"
 },
 {
-  "directory": "/Users/ronnymilleo/Develop/cpp/digital_control/build/debug",
-  "command": "/usr/bin/c++  -I/Users/ronnymilleo/Develop/cpp/digital_control -O3 -DNDEBUG -std=c++17 -arch arm64 -Wall -Wextra -Wpedantic -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wmissing-declarations -Wmissing-include-dirs -Wold-style-cast -Woverloaded-virtual -Wredundant-decls -Wshadow -Wsign-conversion -Wsign-promo -Wstrict-overflow=5 -Wswitch-default -Wundef -o CMakeFiles/sim_pid_second_order.dir/examples/sim_pid_second_order.cpp.o -c /Users/ronnymilleo/Develop/cpp/digital_control/examples/sim_pid_second_order.cpp",
-  "file": "/Users/ronnymilleo/Develop/cpp/digital_control/examples/sim_pid_second_order.cpp",
-  "output": "CMakeFiles/sim_pid_second_order.dir/examples/sim_pid_second_order.cpp.o"
+  "directory": "D:/Develop/cpp/digital_control/build/clang-debug",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -ID:/Develop/cpp/digital_control -ID:/Develop/cpp/digital_control/vendor/nlohmann_json/single_include -O0 -std=c++17 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -g -Xclang -gcodeview -Wall -Wextra -Wpedantic -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wmissing-declarations -Wmissing-include-dirs -Wold-style-cast -Woverloaded-virtual -Wredundant-decls -Wshadow -Wsign-conversion -Wsign-promo -Wstrict-overflow=5 -Wswitch-default -Wundef -o CMakeFiles\\sim_pid_first_order.dir\\examples\\sim_pid_first_order.cpp.obj -c D:\\Develop\\cpp\\digital_control\\examples\\sim_pid_first_order.cpp",
+  "file": "D:\\Develop\\cpp\\digital_control\\examples\\sim_pid_first_order.cpp",
+  "output": "CMakeFiles\\sim_pid_first_order.dir\\examples\\sim_pid_first_order.cpp.obj"
 },
 {
-  "directory": "/Users/ronnymilleo/Develop/cpp/digital_control/build/debug",
-  "command": "/usr/bin/c++  -I/Users/ronnymilleo/Develop/cpp/digital_control -isystem /Users/ronnymilleo/Develop/cpp/digital_control/vendor/googletest/googletest/include -isystem /Users/ronnymilleo/Develop/cpp/digital_control/vendor/googletest/googletest -O3 -DNDEBUG -std=c++17 -arch arm64 -Wall -Wextra -Wpedantic -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wmissing-declarations -Wmissing-include-dirs -Wold-style-cast -Woverloaded-virtual -Wredundant-decls -Wshadow -Wsign-conversion -Wsign-promo -Wstrict-overflow=5 -Wswitch-default -Wundef -o CMakeFiles/digital_control_tests.dir/tests/test_pid.cpp.o -c /Users/ronnymilleo/Develop/cpp/digital_control/tests/test_pid.cpp",
-  "file": "/Users/ronnymilleo/Develop/cpp/digital_control/tests/test_pid.cpp",
-  "output": "CMakeFiles/digital_control_tests.dir/tests/test_pid.cpp.o"
+  "directory": "D:/Develop/cpp/digital_control/build/clang-debug",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -ID:/Develop/cpp/digital_control -ID:/Develop/cpp/digital_control/vendor/nlohmann_json/single_include -O0 -std=c++17 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -g -Xclang -gcodeview -Wall -Wextra -Wpedantic -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wmissing-declarations -Wmissing-include-dirs -Wold-style-cast -Woverloaded-virtual -Wredundant-decls -Wshadow -Wsign-conversion -Wsign-promo -Wstrict-overflow=5 -Wswitch-default -Wundef -o CMakeFiles\\sim_pid_second_order.dir\\examples\\sim_pid_second_order.cpp.obj -c D:\\Develop\\cpp\\digital_control\\examples\\sim_pid_second_order.cpp",
+  "file": "D:\\Develop\\cpp\\digital_control\\examples\\sim_pid_second_order.cpp",
+  "output": "CMakeFiles\\sim_pid_second_order.dir\\examples\\sim_pid_second_order.cpp.obj"
 },
 {
-  "directory": "/Users/ronnymilleo/Develop/cpp/digital_control/build/debug/vendor/googletest/googlemock",
-  "command": "/usr/bin/c++  -I/Users/ronnymilleo/Develop/cpp/digital_control/vendor/googletest/googlemock/include -I/Users/ronnymilleo/Develop/cpp/digital_control/vendor/googletest/googlemock -isystem /Users/ronnymilleo/Develop/cpp/digital_control/vendor/googletest/googletest/include -isystem /Users/ronnymilleo/Develop/cpp/digital_control/vendor/googletest/googletest -O3 -DNDEBUG -std=c++17 -arch arm64  -DGTEST_HAS_PTHREAD=1   -o CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /Users/ronnymilleo/Develop/cpp/digital_control/vendor/googletest/googlemock/src/gmock-all.cc",
-  "file": "/Users/ronnymilleo/Develop/cpp/digital_control/vendor/googletest/googlemock/src/gmock-all.cc",
-  "output": "vendor/googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o"
+  "directory": "D:/Develop/cpp/digital_control/build/clang-debug",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -ID:/Develop/cpp/digital_control -ID:/Develop/cpp/digital_control/vendor/nlohmann_json/single_include -isystem D:/Develop/cpp/digital_control/vendor/googletest/googletest/include -isystem D:/Develop/cpp/digital_control/vendor/googletest/googletest -O0 -std=c++17 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -g -Xclang -gcodeview -Wall -Wextra -Wpedantic -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wmissing-declarations -Wmissing-include-dirs -Wold-style-cast -Woverloaded-virtual -Wredundant-decls -Wshadow -Wsign-conversion -Wsign-promo -Wstrict-overflow=5 -Wswitch-default -Wundef -o CMakeFiles\\digital_control_tests.dir\\tests\\test_pid.cpp.obj -c D:\\Develop\\cpp\\digital_control\\tests\\test_pid.cpp",
+  "file": "D:\\Develop\\cpp\\digital_control\\tests\\test_pid.cpp",
+  "output": "CMakeFiles\\digital_control_tests.dir\\tests\\test_pid.cpp.obj"
 },
 {
-  "directory": "/Users/ronnymilleo/Develop/cpp/digital_control/build/debug/vendor/googletest/googlemock",
-  "command": "/usr/bin/c++  -isystem /Users/ronnymilleo/Develop/cpp/digital_control/vendor/googletest/googlemock/include -isystem /Users/ronnymilleo/Develop/cpp/digital_control/vendor/googletest/googlemock -isystem /Users/ronnymilleo/Develop/cpp/digital_control/vendor/googletest/googletest/include -isystem /Users/ronnymilleo/Develop/cpp/digital_control/vendor/googletest/googletest -O3 -DNDEBUG -std=c++17 -arch arm64  -DGTEST_HAS_PTHREAD=1   -o CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /Users/ronnymilleo/Develop/cpp/digital_control/vendor/googletest/googlemock/src/gmock_main.cc",
-  "file": "/Users/ronnymilleo/Develop/cpp/digital_control/vendor/googletest/googlemock/src/gmock_main.cc",
-  "output": "vendor/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o"
+  "directory": "D:/Develop/cpp/digital_control/build/clang-debug",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -ID:/Develop/cpp/digital_control/vendor/googletest/googlemock/include -ID:/Develop/cpp/digital_control/vendor/googletest/googlemock -isystem D:/Develop/cpp/digital_control/vendor/googletest/googletest/include -isystem D:/Develop/cpp/digital_control/vendor/googletest/googletest -O0 -std=c++17 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -g -Xclang -gcodeview -Wall -Wshadow -Wconversion -Wundef -DGTEST_HAS_PTHREAD=0 -fexceptions -W -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wswitch -Wunused-parameter -Wcast-align -Winline -Wredundant-decls -Wchar-subscripts -o vendor\\googletest\\googlemock\\CMakeFiles\\gmock.dir\\src\\gmock-all.cc.obj -c D:\\Develop\\cpp\\digital_control\\vendor\\googletest\\googlemock\\src\\gmock-all.cc",
+  "file": "D:\\Develop\\cpp\\digital_control\\vendor\\googletest\\googlemock\\src\\gmock-all.cc",
+  "output": "vendor\\googletest\\googlemock\\CMakeFiles\\gmock.dir\\src\\gmock-all.cc.obj"
 },
 {
-  "directory": "/Users/ronnymilleo/Develop/cpp/digital_control/build/debug/vendor/googletest/googletest",
-  "command": "/usr/bin/c++  -I/Users/ronnymilleo/Develop/cpp/digital_control/vendor/googletest/googletest/include -I/Users/ronnymilleo/Develop/cpp/digital_control/vendor/googletest/googletest -O3 -DNDEBUG -std=c++17 -arch arm64  -DGTEST_HAS_PTHREAD=1   -o CMakeFiles/gtest.dir/src/gtest-all.cc.o -c /Users/ronnymilleo/Develop/cpp/digital_control/vendor/googletest/googletest/src/gtest-all.cc",
-  "file": "/Users/ronnymilleo/Develop/cpp/digital_control/vendor/googletest/googletest/src/gtest-all.cc",
-  "output": "vendor/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o"
+  "directory": "D:/Develop/cpp/digital_control/build/clang-debug",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -isystem D:/Develop/cpp/digital_control/vendor/googletest/googlemock/include -isystem D:/Develop/cpp/digital_control/vendor/googletest/googlemock -isystem D:/Develop/cpp/digital_control/vendor/googletest/googletest/include -isystem D:/Develop/cpp/digital_control/vendor/googletest/googletest -O0 -std=c++17 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -g -Xclang -gcodeview -Wall -Wshadow -Wconversion -Wundef -DGTEST_HAS_PTHREAD=0 -fexceptions -W -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wswitch -Wunused-parameter -Wcast-align -Winline -Wredundant-decls -Wchar-subscripts -o vendor\\googletest\\googlemock\\CMakeFiles\\gmock_main.dir\\src\\gmock_main.cc.obj -c D:\\Develop\\cpp\\digital_control\\vendor\\googletest\\googlemock\\src\\gmock_main.cc",
+  "file": "D:\\Develop\\cpp\\digital_control\\vendor\\googletest\\googlemock\\src\\gmock_main.cc",
+  "output": "vendor\\googletest\\googlemock\\CMakeFiles\\gmock_main.dir\\src\\gmock_main.cc.obj"
 },
 {
-  "directory": "/Users/ronnymilleo/Develop/cpp/digital_control/build/debug/vendor/googletest/googletest",
-  "command": "/usr/bin/c++  -isystem /Users/ronnymilleo/Develop/cpp/digital_control/vendor/googletest/googletest/include -isystem /Users/ronnymilleo/Develop/cpp/digital_control/vendor/googletest/googletest -O3 -DNDEBUG -std=c++17 -arch arm64  -DGTEST_HAS_PTHREAD=1   -o CMakeFiles/gtest_main.dir/src/gtest_main.cc.o -c /Users/ronnymilleo/Develop/cpp/digital_control/vendor/googletest/googletest/src/gtest_main.cc",
-  "file": "/Users/ronnymilleo/Develop/cpp/digital_control/vendor/googletest/googletest/src/gtest_main.cc",
-  "output": "vendor/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o"
+  "directory": "D:/Develop/cpp/digital_control/build/clang-debug",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -ID:/Develop/cpp/digital_control/vendor/googletest/googletest/include -ID:/Develop/cpp/digital_control/vendor/googletest/googletest -O0 -std=c++17 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -g -Xclang -gcodeview -Wall -Wshadow -Wconversion -Wundef -DGTEST_HAS_PTHREAD=0 -fexceptions -W -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wswitch -Wunused-parameter -Wcast-align -Winline -Wredundant-decls -Wchar-subscripts -o vendor\\googletest\\googletest\\CMakeFiles\\gtest.dir\\src\\gtest-all.cc.obj -c D:\\Develop\\cpp\\digital_control\\vendor\\googletest\\googletest\\src\\gtest-all.cc",
+  "file": "D:\\Develop\\cpp\\digital_control\\vendor\\googletest\\googletest\\src\\gtest-all.cc",
+  "output": "vendor\\googletest\\googletest\\CMakeFiles\\gtest.dir\\src\\gtest-all.cc.obj"
+},
+{
+  "directory": "D:/Develop/cpp/digital_control/build/clang-debug",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -isystem D:/Develop/cpp/digital_control/vendor/googletest/googletest/include -isystem D:/Develop/cpp/digital_control/vendor/googletest/googletest -O0 -std=c++17 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -g -Xclang -gcodeview -Wall -Wshadow -Wconversion -Wundef -DGTEST_HAS_PTHREAD=0 -fexceptions -W -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wswitch -Wunused-parameter -Wcast-align -Winline -Wredundant-decls -Wchar-subscripts -o vendor\\googletest\\googletest\\CMakeFiles\\gtest_main.dir\\src\\gtest_main.cc.obj -c D:\\Develop\\cpp\\digital_control\\vendor\\googletest\\googletest\\src\\gtest_main.cc",
+  "file": "D:\\Develop\\cpp\\digital_control\\vendor\\googletest\\googletest\\src\\gtest_main.cc",
+  "output": "vendor\\googletest\\googletest\\CMakeFiles\\gtest_main.dir\\src\\gtest_main.cc.obj"
 }
 ]

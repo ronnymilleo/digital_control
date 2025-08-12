@@ -74,15 +74,6 @@ If `clang-format` is available in PATH, the build runs a `format` target automat
 cmake --build build --target format
 ```
 
-## Install (optional)
-Install the library and public headers to the chosen prefix:
-```bash
-cmake --install build --prefix "${PWD}/_install"
-```
-This installs:
-- Library to `lib/`
-- Public headers to `include/`
-
 ## Project structure (selected)
 - `pid.cpp`, `pid.h` – PID controller
 - `plant.cpp`, `plant.h` – Plant models (first/second order)
@@ -93,5 +84,3 @@ This installs:
 
 ## License
 This project is licensed under the GNU General Public License v3.0 (GPL-3.0). See `LICENSE` for details.
-
-# digital_control
