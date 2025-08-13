@@ -17,10 +17,10 @@ struct IPlant
     virtual ~IPlant() = default;
 
     // Advance the plant one step given input u and timestep dt; returns new output y
-    [[nodiscard]] virtual double step(double u, double dt) = 0;
+    virtual double step(double u, double dt) = 0;
 
     // Get current output without advancing the state
-    [[nodiscard]] virtual double get_output() const = 0;
+    virtual double get_output() const = 0;
 
     // Reset plant to initial conditions
     virtual void reset() = 0;
@@ -37,7 +37,7 @@ class FirstOrderPlant : public IPlant
     {
     }
 
-    [[nodiscard]] double step(double u, double dt) override
+    double step(double u, double dt) override
     {
         if (!std::isfinite(u) || !std::isfinite(dt))
         {
@@ -60,7 +60,7 @@ class FirstOrderPlant : public IPlant
         return y_;
     }
 
-    [[nodiscard]] double get_output() const override
+    double get_output() const override
     {
         return y_;
     }
@@ -71,15 +71,15 @@ class FirstOrderPlant : public IPlant
     }
 
     // Getters
-    [[nodiscard]] constexpr double get_gain() const
+    constexpr double get_gain() const
     {
         return K_;
     }
-    [[nodiscard]] constexpr double get_time_constant() const
+    constexpr double get_time_constant() const
     {
         return tau_;
     }
-    [[nodiscard]] constexpr double get_initial_value() const
+    constexpr double get_initial_value() const
     {
         return y0_;
     }
@@ -107,7 +107,7 @@ class SecondOrderPlant : public IPlant
     {
     }
 
-    [[nodiscard]] double step(double u, double dt) override
+    double step(double u, double dt) override
     {
         if (!std::isfinite(u) || !std::isfinite(dt))
         {
@@ -134,7 +134,7 @@ class SecondOrderPlant : public IPlant
         return x_;
     }
 
-    [[nodiscard]] double get_output() const override
+    double get_output() const override
     {
         return x_;
     }
@@ -146,27 +146,27 @@ class SecondOrderPlant : public IPlant
     }
 
     // Getters
-    [[nodiscard]] constexpr double get_mass() const
+    constexpr double get_mass() const
     {
         return m_;
     }
-    [[nodiscard]] constexpr double get_damping() const
+    constexpr double get_damping() const
     {
         return b_;
     }
-    [[nodiscard]] constexpr double get_stiffness() const
+    constexpr double get_stiffness() const
     {
         return k_;
     }
-    [[nodiscard]] constexpr double get_gain() const
+    constexpr double get_gain() const
     {
         return K_;
     }
-    [[nodiscard]] double get_position() const
+    double get_position() const
     {
         return x_;
     }
-    [[nodiscard]] double get_velocity() const
+    double get_velocity() const
     {
         return v_;
     }
@@ -185,15 +185,13 @@ class SecondOrderPlant : public IPlant
 };
 
 // Factory functions
-[[nodiscard]] inline std::unique_ptr<FirstOrderPlant> make_first_order_plant(double K = 1.0, double tau = 1.0,
-                                                                             double y0 = 0.0)
+inline std::unique_ptr<FirstOrderPlant> make_first_order_plant(double K = 1.0, double tau = 1.0, double y0 = 0.0)
 {
     return std::make_unique<FirstOrderPlant>(K, tau, y0);
 }
 
-[[nodiscard]] inline std::unique_ptr<SecondOrderPlant> make_second_order_plant(double m = 1.0, double b = 0.5,
-                                                                               double k = 4.0, double K = 1.0,
-                                                                               double x0 = 0.0, double v0 = 0.0)
+inline std::unique_ptr<SecondOrderPlant> make_second_order_plant(double m = 1.0, double b = 0.5, double k = 4.0,
+                                                                 double K = 1.0, double x0 = 0.0, double v0 = 0.0)
 {
     return std::make_unique<SecondOrderPlant>(m, b, k, K, x0, v0);
 }

@@ -33,43 +33,43 @@ class PID : public Controller
     void set_derivative_filter(double alpha); // 0..1, 1 = no filtering
 
     // Control update
-    [[nodiscard]] double update(double y, double dt) override; // returns u
+    double update(double y, double dt) override; // returns u
     void reset() override;
 
     // Getters
-    [[nodiscard]] double get_setpoint() const override
+    double get_setpoint() const override
     {
         return r_;
     }
-    [[nodiscard]] double get_last_output() const override
+    double get_last_output() const override
     {
         return u_prev_;
     }
-    [[nodiscard]] double get_kp() const
+    double get_kp() const
     {
         return kp_;
     }
-    [[nodiscard]] double get_ki() const
+    double get_ki() const
     {
         return ki_;
     }
-    [[nodiscard]] double get_kd() const
+    double get_kd() const
     {
         return kd_;
     }
-    [[nodiscard]] double get_integral_term() const
+    double get_integral_term() const
     {
         return integ_;
     }
-    [[nodiscard]] double get_min_output() const
+    double get_min_output() const
     {
         return umin_;
     }
-    [[nodiscard]] double get_max_output() const
+    double get_max_output() const
     {
         return umax_;
     }
-    [[nodiscard]] double get_derivative_filter() const
+    double get_derivative_filter() const
     {
         return alpha_;
     }
@@ -101,7 +101,7 @@ class PID : public Controller
 };
 
 // Factory function
-[[nodiscard]] inline std::unique_ptr<PID> make_pid(double kp = 0.0, double ki = 0.0, double kd = 0.0)
+inline std::unique_ptr<PID> make_pid(double kp = 0.0, double ki = 0.0, double kd = 0.0)
 {
     return std::make_unique<PID>(kp, ki, kd);
 }
