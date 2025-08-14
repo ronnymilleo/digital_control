@@ -99,11 +99,10 @@
 - [x] Quick Win #1: CMake install targets for examples
 - [x] Quick Win #2: Library namespace (DigitalControl::)
 - [x] Quick Win #3: constexpr additions
-- [x] Quick Win #4: [[nodiscard]] attributes
-- [x] Quick Win #5: Move semantics
-- [x] Quick Win #6: Stream operators
-- [x] Quick Win #7: Exception handling
-- [x] Quick Win #8: Factory functions
+- [x] Quick Win #4: Move semantics
+- [x] Quick Win #5: Stream operators
+- [x] Quick Win #6: Exception handling
+- [x] Quick Win #7: Factory functions
 
 ### In Progress
 - [ ] None

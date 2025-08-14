@@ -1,0 +1,21 @@
+#pragma once
+
+#include "imgui.h"
+#include <GLFW/glfw3.h>
+#include <imgui_impl_glfw.h>
+#include <imgui_impl_opengl3.h>
+
+class ImGuiLayer
+{
+  public:
+    ImGuiLayer() = default;
+    ~ImGuiLayer() = default;
+
+    static void Init(GLFWwindow *window);
+    static void BeginFrame();
+    static void EnableDockSpace();
+    static void EndFrame();
+    static void Render(GLFWwindow *window, ImVec4 &clear_color);
+    static void SetStyle();
+    static void Shutdown();
+};

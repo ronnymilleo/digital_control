@@ -1,9 +1,9 @@
 [
 {
   "directory": "D:/Develop/cpp/digital_control/build/clang-release",
-  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -ID:/Develop/cpp/digital_control/application -ID:/Develop/cpp/digital_control/core -ID:/Develop/cpp/digital_control/vendor/imgui -ID:/Develop/cpp/digital_control/vendor/imgui/backends -ID:/Develop/cpp/digital_control/vendor/glfw/include -ID:/Develop/cpp/digital_control -ID:/Develop/cpp/digital_control/vendor/nlohmann_json/include -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt @CMakeFiles\\digital_control.dir\\application\\main.cpp.obj.modmap -o CMakeFiles\\digital_control.dir\\application\\main.cpp.obj -c D:\\Develop\\cpp\\digital_control\\application\\main.cpp",
-  "file": "D:\\Develop\\cpp\\digital_control\\application\\main.cpp",
-  "output": "CMakeFiles\\digital_control.dir\\application\\main.cpp.obj"
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -DSPDLOG_COMPILED_LIB -ID:/Develop/cpp/digital_control/application -ID:/Develop/cpp/digital_control/core -ID:/Develop/cpp/digital_control/vendor/stb -ID:/Develop/cpp/digital_control/vendor/imgui -ID:/Develop/cpp/digital_control/vendor/imgui/backends -ID:/Develop/cpp/digital_control/vendor/glfw/include -ID:/Develop/cpp/digital_control -ID:/Develop/cpp/digital_control/vendor/nlohmann_json/include -ID:/Develop/cpp/digital_control/vendor/spdlog/include -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt @CMakeFiles\\digital_control.dir\\main.cpp.obj.modmap -o CMakeFiles\\digital_control.dir\\main.cpp.obj -c D:\\Develop\\cpp\\digital_control\\main.cpp",
+  "file": "D:\\Develop\\cpp\\digital_control\\main.cpp",
+  "output": "CMakeFiles\\digital_control.dir\\main.cpp.obj"
 },
 {
   "directory": "D:/Develop/cpp/digital_control/build/clang-release",
@@ -22,12 +22,6 @@
   "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -ID:/Develop/cpp/digital_control -ID:/Develop/cpp/digital_control/vendor/nlohmann_json/include -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt @CMakeFiles\\digital_control_lib.dir\\core\\tuner.cpp.obj.modmap -o CMakeFiles\\digital_control_lib.dir\\core\\tuner.cpp.obj -c D:\\Develop\\cpp\\digital_control\\core\\tuner.cpp",
   "file": "D:\\Develop\\cpp\\digital_control\\core\\tuner.cpp",
   "output": "CMakeFiles\\digital_control_lib.dir\\core\\tuner.cpp.obj"
-},
-{
-  "directory": "D:/Develop/cpp/digital_control/build/clang-release",
-  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -ID:/Develop/cpp/digital_control/core -ID:/Develop/cpp/digital_control -ID:/Develop/cpp/digital_control/vendor/nlohmann_json/include -isystem D:/Develop/cpp/digital_control/vendor/googletest/googletest/include -isystem D:/Develop/cpp/digital_control/vendor/googletest/googletest -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt @CMakeFiles\\digital_control_tests.dir\\tests\\test_pid.cpp.obj.modmap -o CMakeFiles\\digital_control_tests.dir\\tests\\test_pid.cpp.obj -c D:\\Develop\\cpp\\digital_control\\tests\\test_pid.cpp",
-  "file": "D:\\Develop\\cpp\\digital_control\\tests\\test_pid.cpp",
-  "output": "CMakeFiles\\digital_control_tests.dir\\tests\\test_pid.cpp.obj"
 },
 {
   "directory": "D:/Develop/cpp/digital_control/build/clang-release",
@@ -199,6 +193,48 @@
 },
 {
   "directory": "D:/Develop/cpp/digital_control/build/clang-release",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -DSPDLOG_COMPILED_LIB -DSPDLOG_FWRITE_UNLOCKED -ID:/Develop/cpp/digital_control/vendor/spdlog/include -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt -o vendor\\spdlog\\CMakeFiles\\spdlog.dir\\src\\spdlog.cpp.obj -c D:\\Develop\\cpp\\digital_control\\vendor\\spdlog\\src\\spdlog.cpp",
+  "file": "D:\\Develop\\cpp\\digital_control\\vendor\\spdlog\\src\\spdlog.cpp",
+  "output": "vendor\\spdlog\\CMakeFiles\\spdlog.dir\\src\\spdlog.cpp.obj"
+},
+{
+  "directory": "D:/Develop/cpp/digital_control/build/clang-release",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -DSPDLOG_COMPILED_LIB -DSPDLOG_FWRITE_UNLOCKED -ID:/Develop/cpp/digital_control/vendor/spdlog/include -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt -o vendor\\spdlog\\CMakeFiles\\spdlog.dir\\src\\stdout_sinks.cpp.obj -c D:\\Develop\\cpp\\digital_control\\vendor\\spdlog\\src\\stdout_sinks.cpp",
+  "file": "D:\\Develop\\cpp\\digital_control\\vendor\\spdlog\\src\\stdout_sinks.cpp",
+  "output": "vendor\\spdlog\\CMakeFiles\\spdlog.dir\\src\\stdout_sinks.cpp.obj"
+},
+{
+  "directory": "D:/Develop/cpp/digital_control/build/clang-release",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -DSPDLOG_COMPILED_LIB -DSPDLOG_FWRITE_UNLOCKED -ID:/Develop/cpp/digital_control/vendor/spdlog/include -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt -o vendor\\spdlog\\CMakeFiles\\spdlog.dir\\src\\color_sinks.cpp.obj -c D:\\Develop\\cpp\\digital_control\\vendor\\spdlog\\src\\color_sinks.cpp",
+  "file": "D:\\Develop\\cpp\\digital_control\\vendor\\spdlog\\src\\color_sinks.cpp",
+  "output": "vendor\\spdlog\\CMakeFiles\\spdlog.dir\\src\\color_sinks.cpp.obj"
+},
+{
+  "directory": "D:/Develop/cpp/digital_control/build/clang-release",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -DSPDLOG_COMPILED_LIB -DSPDLOG_FWRITE_UNLOCKED -ID:/Develop/cpp/digital_control/vendor/spdlog/include -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt -o vendor\\spdlog\\CMakeFiles\\spdlog.dir\\src\\file_sinks.cpp.obj -c D:\\Develop\\cpp\\digital_control\\vendor\\spdlog\\src\\file_sinks.cpp",
+  "file": "D:\\Develop\\cpp\\digital_control\\vendor\\spdlog\\src\\file_sinks.cpp",
+  "output": "vendor\\spdlog\\CMakeFiles\\spdlog.dir\\src\\file_sinks.cpp.obj"
+},
+{
+  "directory": "D:/Develop/cpp/digital_control/build/clang-release",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -DSPDLOG_COMPILED_LIB -DSPDLOG_FWRITE_UNLOCKED -ID:/Develop/cpp/digital_control/vendor/spdlog/include -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt -o vendor\\spdlog\\CMakeFiles\\spdlog.dir\\src\\async.cpp.obj -c D:\\Develop\\cpp\\digital_control\\vendor\\spdlog\\src\\async.cpp",
+  "file": "D:\\Develop\\cpp\\digital_control\\vendor\\spdlog\\src\\async.cpp",
+  "output": "vendor\\spdlog\\CMakeFiles\\spdlog.dir\\src\\async.cpp.obj"
+},
+{
+  "directory": "D:/Develop/cpp/digital_control/build/clang-release",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -DSPDLOG_COMPILED_LIB -DSPDLOG_FWRITE_UNLOCKED -ID:/Develop/cpp/digital_control/vendor/spdlog/include -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt -o vendor\\spdlog\\CMakeFiles\\spdlog.dir\\src\\cfg.cpp.obj -c D:\\Develop\\cpp\\digital_control\\vendor\\spdlog\\src\\cfg.cpp",
+  "file": "D:\\Develop\\cpp\\digital_control\\vendor\\spdlog\\src\\cfg.cpp",
+  "output": "vendor\\spdlog\\CMakeFiles\\spdlog.dir\\src\\cfg.cpp.obj"
+},
+{
+  "directory": "D:/Develop/cpp/digital_control/build/clang-release",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -DSPDLOG_COMPILED_LIB -DSPDLOG_FWRITE_UNLOCKED -ID:/Develop/cpp/digital_control/vendor/spdlog/include -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt -o vendor\\spdlog\\CMakeFiles\\spdlog.dir\\src\\bundled_fmtlib_format.cpp.obj -c D:\\Develop\\cpp\\digital_control\\vendor\\spdlog\\src\\bundled_fmtlib_format.cpp",
+  "file": "D:\\Develop\\cpp\\digital_control\\vendor\\spdlog\\src\\bundled_fmtlib_format.cpp",
+  "output": "vendor\\spdlog\\CMakeFiles\\spdlog.dir\\src\\bundled_fmtlib_format.cpp.obj"
+},
+{
+  "directory": "D:/Develop/cpp/digital_control/build/clang-release",
   "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -ID:/Develop/cpp/digital_control/core -ID:/Develop/cpp/digital_control -ID:/Develop/cpp/digital_control/vendor/nlohmann_json/include -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt @examples\\CMakeFiles\\sim_pid_first_order.dir\\sim_pid_first_order.cpp.obj.modmap -o examples\\CMakeFiles\\sim_pid_first_order.dir\\sim_pid_first_order.cpp.obj -c D:\\Develop\\cpp\\digital_control\\examples\\sim_pid_first_order.cpp",
   "file": "D:\\Develop\\cpp\\digital_control\\examples\\sim_pid_first_order.cpp",
   "output": "examples\\CMakeFiles\\sim_pid_first_order.dir\\sim_pid_first_order.cpp.obj"
@@ -211,26 +247,14 @@
 },
 {
   "directory": "D:/Develop/cpp/digital_control/build/clang-release",
-  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -ID:/Develop/cpp/digital_control/vendor/googletest/googlemock/include -ID:/Develop/cpp/digital_control/vendor/googletest/googlemock -isystem D:/Develop/cpp/digital_control/vendor/googletest/googletest/include -isystem D:/Develop/cpp/digital_control/vendor/googletest/googletest -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt -Wall -Wshadow -Wconversion -Wundef -DGTEST_HAS_PTHREAD=0 -fexceptions -W -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wswitch -Wunused-parameter -Wcast-align -Winline -Wredundant-decls -Wchar-subscripts -o vendor\\googletest\\googlemock\\CMakeFiles\\gmock.dir\\src\\gmock-all.cc.obj -c D:\\Develop\\cpp\\digital_control\\vendor\\googletest\\googlemock\\src\\gmock-all.cc",
-  "file": "D:\\Develop\\cpp\\digital_control\\vendor\\googletest\\googlemock\\src\\gmock-all.cc",
-  "output": "vendor\\googletest\\googlemock\\CMakeFiles\\gmock.dir\\src\\gmock-all.cc.obj"
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -DSPDLOG_COMPILED_LIB -ID:/Develop/cpp/digital_control/application -ID:/Develop/cpp/digital_control/core -ID:/Develop/cpp/digital_control/vendor/stb -ID:/Develop/cpp/digital_control/vendor/imgui -ID:/Develop/cpp/digital_control/vendor/imgui/backends -ID:/Develop/cpp/digital_control/vendor/glfw/include -ID:/Develop/cpp/digital_control -ID:/Develop/cpp/digital_control/vendor/nlohmann_json/include -ID:/Develop/cpp/digital_control/vendor/spdlog/include -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt @application\\CMakeFiles\\app_gui.dir\\app_gui.cpp.obj.modmap -o application\\CMakeFiles\\app_gui.dir\\app_gui.cpp.obj -c D:\\Develop\\cpp\\digital_control\\application\\app_gui.cpp",
+  "file": "D:\\Develop\\cpp\\digital_control\\application\\app_gui.cpp",
+  "output": "application\\CMakeFiles\\app_gui.dir\\app_gui.cpp.obj"
 },
 {
   "directory": "D:/Develop/cpp/digital_control/build/clang-release",
-  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -isystem D:/Develop/cpp/digital_control/vendor/googletest/googlemock/include -isystem D:/Develop/cpp/digital_control/vendor/googletest/googlemock -isystem D:/Develop/cpp/digital_control/vendor/googletest/googletest/include -isystem D:/Develop/cpp/digital_control/vendor/googletest/googletest -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt -Wall -Wshadow -Wconversion -Wundef -DGTEST_HAS_PTHREAD=0 -fexceptions -W -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wswitch -Wunused-parameter -Wcast-align -Winline -Wredundant-decls -Wchar-subscripts -o vendor\\googletest\\googlemock\\CMakeFiles\\gmock_main.dir\\src\\gmock_main.cc.obj -c D:\\Develop\\cpp\\digital_control\\vendor\\googletest\\googlemock\\src\\gmock_main.cc",
-  "file": "D:\\Develop\\cpp\\digital_control\\vendor\\googletest\\googlemock\\src\\gmock_main.cc",
-  "output": "vendor\\googletest\\googlemock\\CMakeFiles\\gmock_main.dir\\src\\gmock_main.cc.obj"
-},
-{
-  "directory": "D:/Develop/cpp/digital_control/build/clang-release",
-  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -ID:/Develop/cpp/digital_control/vendor/googletest/googletest/include -ID:/Develop/cpp/digital_control/vendor/googletest/googletest -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt -Wall -Wshadow -Wconversion -Wundef -DGTEST_HAS_PTHREAD=0 -fexceptions -W -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wswitch -Wunused-parameter -Wcast-align -Winline -Wredundant-decls -Wchar-subscripts -o vendor\\googletest\\googletest\\CMakeFiles\\gtest.dir\\src\\gtest-all.cc.obj -c D:\\Develop\\cpp\\digital_control\\vendor\\googletest\\googletest\\src\\gtest-all.cc",
-  "file": "D:\\Develop\\cpp\\digital_control\\vendor\\googletest\\googletest\\src\\gtest-all.cc",
-  "output": "vendor\\googletest\\googletest\\CMakeFiles\\gtest.dir\\src\\gtest-all.cc.obj"
-},
-{
-  "directory": "D:/Develop/cpp/digital_control/build/clang-release",
-  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -isystem D:/Develop/cpp/digital_control/vendor/googletest/googletest/include -isystem D:/Develop/cpp/digital_control/vendor/googletest/googletest -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt -Wall -Wshadow -Wconversion -Wundef -DGTEST_HAS_PTHREAD=0 -fexceptions -W -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wswitch -Wunused-parameter -Wcast-align -Winline -Wredundant-decls -Wchar-subscripts -o vendor\\googletest\\googletest\\CMakeFiles\\gtest_main.dir\\src\\gtest_main.cc.obj -c D:\\Develop\\cpp\\digital_control\\vendor\\googletest\\googletest\\src\\gtest_main.cc",
-  "file": "D:\\Develop\\cpp\\digital_control\\vendor\\googletest\\googletest\\src\\gtest_main.cc",
-  "output": "vendor\\googletest\\googletest\\CMakeFiles\\gtest_main.dir\\src\\gtest_main.cc.obj"
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -DSPDLOG_COMPILED_LIB -ID:/Develop/cpp/digital_control/application -ID:/Develop/cpp/digital_control/core -ID:/Develop/cpp/digital_control/vendor/stb -ID:/Develop/cpp/digital_control/vendor/imgui -ID:/Develop/cpp/digital_control/vendor/imgui/backends -ID:/Develop/cpp/digital_control/vendor/glfw/include -ID:/Develop/cpp/digital_control -ID:/Develop/cpp/digital_control/vendor/nlohmann_json/include -ID:/Develop/cpp/digital_control/vendor/spdlog/include -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt @application\\CMakeFiles\\app_gui.dir\\imgui_layer.cpp.obj.modmap -o application\\CMakeFiles\\app_gui.dir\\imgui_layer.cpp.obj -c D:\\Develop\\cpp\\digital_control\\application\\imgui_layer.cpp",
+  "file": "D:\\Develop\\cpp\\digital_control\\application\\imgui_layer.cpp",
+  "output": "application\\CMakeFiles\\app_gui.dir\\imgui_layer.cpp.obj"
 }
 ]

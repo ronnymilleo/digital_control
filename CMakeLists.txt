@@ -37,7 +37,11 @@ option(DC_BUILD_TESTS "Build unit tests" OFF)
 # =============================================================================
 find_program(CLANG_FORMAT NAMES clang-format)
 set(DC_FORMAT_FILES
-    ${CMAKE_SOURCE_DIR}/application/main.cpp
+    ${CMAKE_SOURCE_DIR}/main.cpp
+    ${CMAKE_SOURCE_DIR}/application/app_gui.cpp
+    ${CMAKE_SOURCE_DIR}/application/app_gui.h
+    ${CMAKE_SOURCE_DIR}/application/imgui_layer.cpp
+    ${CMAKE_SOURCE_DIR}/application/imgui_layer.h
     ${CMAKE_SOURCE_DIR}/core/controller.h
     ${CMAKE_SOURCE_DIR}/core/exceptions.h
     ${CMAKE_SOURCE_DIR}/core/pid.h
@@ -71,6 +75,7 @@ endif()
 
 add_subdirectory(vendor)
 add_subdirectory(examples)
+add_subdirectory(application)
 
 # =============================================================================
 # Copy compile_commands.json to source dir for clangd after each build
@@ -95,7 +100,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/${BUILD_TYPE_LOWER}/lib"
 # =============================================================================
 
 add_executable(digital_control
-    ${CMAKE_SOURCE_DIR}/application/main.cpp
+    ${CMAKE_SOURCE_DIR}/main.cpp
 )
 
 target_include_directories(digital_control
@@ -106,8 +111,7 @@ target_include_directories(digital_control
 
 target_link_libraries(digital_control 
     PRIVATE 
-        imgui
-        digital_control_lib
+        app_gui
 )
 
 # =============================================================================
