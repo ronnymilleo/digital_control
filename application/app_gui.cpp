@@ -14,6 +14,8 @@ static void glfw_error_callback(int error, const char *description)
 
 AppGUI::AppGUI(const std::string &title, GLint width, GLint height) : m_Title(title), m_Width(width), m_Height(height)
 {
+    // Default icon path - can be overridden with SetIcon()
+    m_IconPath = "assets/icon.png";
 }
 
 AppGUI::~AppGUI()
@@ -74,6 +76,9 @@ GLint AppGUI::Init()
     glfwMakeContextCurrent(m_Window);
     glfwSwapInterval(1); // Enable vsync
 
+    // Load and set window icon if available
+    LoadAndSetIcon();
+
     ImGuiLayer::Init(m_Window);
 
     return 0;
@@ -102,4 +107,46 @@ void AppGUI::SwapBuffers()
 GLFWwindow *AppGUI::GetWindow() const
 {
     return m_Window;
+}
+
+void AppGUI::SetIcon(const std::string &iconPath)
+{
+    m_IconPath = iconPath;
+    if (m_Window)
+    {
+        LoadAndSetIcon();
+    }
+}
+
+void AppGUI::LoadAndSetIcon()
+{
+    if (m_IconPath.empty())
+    {
+        spdlog::warn("No icon path specified");
+        return;
+    }
+
+    // Load icon using stb_image
+    int width, height, channels;
+    unsigned char *pixels = stbi_load(m_IconPath.c_str(), &width, &height, &channels, 4); // Force RGBA
+
+    if (!pixels)
+    {
+        spdlog::warn("Failed to load icon from: {}", m_IconPath);
+        return;
+    }
+
+    // Create GLFW image structure
+    GLFWimage icon;
+    icon.width = width;
+    icon.height = height;
+    icon.pixels = pixels;
+
+    // Set the window icon
+    glfwSetWindowIcon(m_Window, 1, &icon);
+
+    // Free the loaded image data
+    stbi_image_free(pixels);
+
+    spdlog::info("Window icon set successfully from: {}", m_IconPath);
 }

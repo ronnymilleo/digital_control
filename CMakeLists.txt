@@ -99,8 +99,16 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/${BUILD_TYPE_LOWER}/lib"
 # GUI Application
 # =============================================================================
 
+# Add Windows resource file for icon on Windows
+if(WIN32)
+    set(WINDOWS_RESOURCES ${CMAKE_SOURCE_DIR}/resources.rc)
+else()
+    set(WINDOWS_RESOURCES "")
+endif()
+
 add_executable(digital_control
     ${CMAKE_SOURCE_DIR}/main.cpp
+    ${WINDOWS_RESOURCES}
 )
 
 target_include_directories(digital_control
@@ -112,6 +120,14 @@ target_include_directories(digital_control
 target_link_libraries(digital_control 
     PRIVATE 
         app_gui
+)
+
+# Copy assets folder to output directory after build
+add_custom_command(TARGET digital_control POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_SOURCE_DIR}/assets
+    $<TARGET_FILE_DIR:digital_control>/assets
+    COMMENT "Copying assets to output directory"
 )
 
 # =============================================================================

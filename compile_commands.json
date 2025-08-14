@@ -7,6 +7,12 @@
 },
 {
   "directory": "D:/Develop/cpp/digital_control/build/clang-release",
+  "command": "\"C:\\Program Files\\CMake\\bin\\cmake.exe\" -E cmake_llvm_rc D:\\Develop\\cpp\\digital_control\\resources.rc CMakeFiles\\digital_control.dir\\resources.rc.res.pp C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -DSPDLOG_COMPILED_LIB -DRC_INVOKED -I D:/Develop/cpp/digital_control/application -I D:/Develop/cpp/digital_control/core -I D:/Develop/cpp/digital_control/vendor/stb -I D:/Develop/cpp/digital_control/vendor/imgui -I D:/Develop/cpp/digital_control/vendor/imgui/backends -I D:/Develop/cpp/digital_control/vendor/glfw/include -I D:/Develop/cpp/digital_control -I D:/Develop/cpp/digital_control/vendor/nlohmann_json/include -I D:/Develop/cpp/digital_control/vendor/spdlog/include -x c -E -- D:\\Develop\\cpp\\digital_control\\resources.rc ++ C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\llvm-rc.exe -DSPDLOG_COMPILED_LIB -I SOURCE_DIR -I D:/Develop/cpp/digital_control/application -I D:/Develop/cpp/digital_control/core -I D:/Develop/cpp/digital_control/vendor/stb -I D:/Develop/cpp/digital_control/vendor/imgui -I D:/Develop/cpp/digital_control/vendor/imgui/backends -I D:/Develop/cpp/digital_control/vendor/glfw/include -I D:/Develop/cpp/digital_control -I D:/Develop/cpp/digital_control/vendor/nlohmann_json/include -I D:/Develop/cpp/digital_control/vendor/spdlog/include /fo CMakeFiles\\digital_control.dir\\resources.rc.res CMakeFiles\\digital_control.dir\\resources.rc.res.pp",
+  "file": "D:\\Develop\\cpp\\digital_control\\resources.rc",
+  "output": "CMakeFiles\\digital_control.dir\\resources.rc.res"
+},
+{
+  "directory": "D:/Develop/cpp/digital_control/build/clang-release",
   "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -ID:/Develop/cpp/digital_control -ID:/Develop/cpp/digital_control/vendor/nlohmann_json/include -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt @CMakeFiles\\digital_control_lib.dir\\core\\pid.cpp.obj.modmap -o CMakeFiles\\digital_control_lib.dir\\core\\pid.cpp.obj -c D:\\Develop\\cpp\\digital_control\\core\\pid.cpp",
   "file": "D:\\Develop\\cpp\\digital_control\\core\\pid.cpp",
   "output": "CMakeFiles\\digital_control_lib.dir\\core\\pid.cpp.obj"

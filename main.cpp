@@ -5,7 +5,12 @@
 // Main code
 int main(int, char **)
 {
-    AppGUI app;
+    // Create app with title - the icon will be loaded automatically from assets/icon.png
+    AppGUI app("Digital Control System");
+
+    // Optional: Set a custom icon path if needed
+    // app.SetIcon("assets/icon_64.png");
+
     if (app.Init() != 0)
     {
         spdlog::error("Failed to initialize AppGUI");
