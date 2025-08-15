@@ -26,6 +26,7 @@ void ImGuiLayer::BeginFrame()
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
+    ImPlot::CreateContext();
 }
 
 void ImGuiLayer::EnableDockSpace()
@@ -100,4 +101,5 @@ void ImGuiLayer::Shutdown()
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
+    ImPlot::DestroyContext();
 }

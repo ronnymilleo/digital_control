@@ -36,6 +36,22 @@ target_link_libraries(imgui
         OpenGL::GL
 )
 
+add_library(implot STATIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/implot/implot.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/implot/implot_demo.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/implot/implot_items.cpp
+)
+
+target_include_directories(implot PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/implot
+    ${CMAKE_CURRENT_SOURCE_DIR}/imgui
+)
+
+target_link_libraries(implot 
+    PUBLIC 
+        imgui
+)
+
 # =============================================================================
 # End of file
 # =============================================================================

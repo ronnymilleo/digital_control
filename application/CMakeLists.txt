@@ -7,6 +7,7 @@ cmake_minimum_required(VERSION 3.28)
 add_library(app_gui STATIC
     ${CMAKE_SOURCE_DIR}/application/app_gui.cpp
     ${CMAKE_SOURCE_DIR}/application/imgui_layer.cpp
+    ${CMAKE_SOURCE_DIR}/application/pid_tuning_window.cpp
 )
 
 target_include_directories(app_gui 
@@ -19,6 +20,7 @@ target_include_directories(app_gui
 target_link_libraries(app_gui 
     PUBLIC 
         imgui
+        implot
         digital_control_lib
         spdlog
 )
