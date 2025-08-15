@@ -43,17 +43,25 @@ set(DC_FORMAT_FILES
     ${CMAKE_SOURCE_DIR}/application/app_gui.h
     ${CMAKE_SOURCE_DIR}/application/imgui_layer.cpp
     ${CMAKE_SOURCE_DIR}/application/imgui_layer.h
+    ${CMAKE_SOURCE_DIR}/application/leadlag_tuning_window.cpp
+    ${CMAKE_SOURCE_DIR}/application/leadlag_tuning_window.h
     ${CMAKE_SOURCE_DIR}/core/controller.h
     ${CMAKE_SOURCE_DIR}/core/exceptions.h
     ${CMAKE_SOURCE_DIR}/core/pid.h
     ${CMAKE_SOURCE_DIR}/core/pid.cpp
+    ${CMAKE_SOURCE_DIR}/core/leadlag.h
+    ${CMAKE_SOURCE_DIR}/core/leadlag.cpp
     ${CMAKE_SOURCE_DIR}/core/plant.h
     ${CMAKE_SOURCE_DIR}/core/plant.cpp
     ${CMAKE_SOURCE_DIR}/core/tuner.h
     ${CMAKE_SOURCE_DIR}/core/tuner.cpp
     ${CMAKE_SOURCE_DIR}/examples/sim_pid_first_order.cpp
     ${CMAKE_SOURCE_DIR}/examples/sim_pid_second_order.cpp
+    ${CMAKE_SOURCE_DIR}/examples/sim_leadlag_first_order.cpp
     ${CMAKE_SOURCE_DIR}/tests/test_pid.cpp
+    ${CMAKE_SOURCE_DIR}/tests/test_leadlag.cpp
+    ${CMAKE_SOURCE_DIR}/tests/test_plant.cpp
+    ${CMAKE_SOURCE_DIR}/tests/test_integration.cpp
 )
 if(CLANG_FORMAT)
     add_custom_target(format ALL
@@ -137,6 +145,7 @@ add_custom_command(TARGET digital_control POST_BUILD
 
 add_library(digital_control_lib STATIC
     ${CMAKE_SOURCE_DIR}/core/pid.cpp
+    ${CMAKE_SOURCE_DIR}/core/leadlag.cpp
     ${CMAKE_SOURCE_DIR}/core/plant.cpp
     ${CMAKE_SOURCE_DIR}/core/tuner.cpp
 )
@@ -159,8 +168,19 @@ target_link_libraries(digital_control_lib
 # =============================================================================
 
 if(DC_BUILD_TESTS)
+    enable_testing()
+    # Bring in vendored GoogleTest
     add_subdirectory(vendor/googletest)
-    add_subdirectory(tests)
+    add_executable(digital_control_tests
+        tests/test_pid.cpp
+        tests/test_leadlag.cpp
+        tests/test_plant.cpp
+        tests/test_integration.cpp
+    )
+    add_dependencies(digital_control_tests format)
+    target_include_directories(digital_control_tests PRIVATE ${CMAKE_SOURCE_DIR}/core)
+    target_link_libraries(digital_control_tests PRIVATE gtest_main digital_control_lib)
+    add_test(NAME digital_control_tests COMMAND digital_control_tests)
 endif()
 
 # =============================================================================

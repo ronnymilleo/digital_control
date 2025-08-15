@@ -84,13 +84,15 @@ void PID::set_setpoint(double r)
 
 void PID::set_output_limits(double umin, double umax)
 {
-    if (!std::isfinite(umin) || !std::isfinite(umax))
+    // Allow infinite limits for no saturation
+    // But both must be either finite or infinite
+    if (std::isnan(umin) || std::isnan(umax))
     {
-        throw InvalidParameterException("Output limits must be finite numbers");
+        throw InvalidParameterException("Output limits cannot be NaN");
     }
-    if (umin > umax)
+    if (umin >= umax)
     {
-        std::swap(umin, umax);
+        throw InvalidParameterException("Lower limit must be less than upper limit");
     }
     umin_ = umin;
     umax_ = umax;
@@ -126,10 +128,9 @@ double PID::update(double y, double dt)
         throw InvalidParameterException("Time step dt must be a finite non-negative number");
     }
 
-    if (dt <= std::numeric_limits<double>::epsilon())
+    if (dt <= 0.0)
     {
-        // Do nothing if dt is effectively zero; return last output.
-        return u_prev_;
+        throw InvalidParameterException("Time step dt must be positive");
     }
 
     const double error = r_ - y;

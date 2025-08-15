@@ -8,6 +8,9 @@ enable_testing()
 
 add_executable(digital_control_tests
     test_pid.cpp
+    test_integration.cpp
+    test_leadlag.cpp
+    test_plant.cpp
 )
 
 add_dependencies(digital_control_tests format)

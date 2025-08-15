@@ -1,5 +1,6 @@
 #include "app_gui.h"
 #include "imgui_layer.h"
+#include "leadlag_tuning_window.h"
 #include "pid_tuning_window.h"
 #include <memory>
 #include <spdlog/spdlog.h>
@@ -30,10 +31,10 @@ int main(int, char **)
     pidWindow->Create();
     windows.push_back(std::move(pidWindow));
 
-    // Add more windows here as needed
-    // auto anotherWindow = std::make_unique<AnotherWindow>();
-    // anotherWindow->Create();
-    // windows.push_back(std::move(anotherWindow));
+    // Add Lead/Lag Tuning Window
+    auto leadlagWindow = std::make_unique<LeadLagTuningWindow>();
+    leadlagWindow->Create();
+    windows.push_back(std::move(leadlagWindow));
 
     bool show_demo_window = false; // Set to false by default
     bool show_menu_bar = true;
@@ -59,13 +60,24 @@ int main(int, char **)
 
             if (ImGui::BeginMenu("View"))
             {
-                bool isOpen = windows[0]->IsOpen();
-                if (ImGui::MenuItem("PID Tuning", nullptr, isOpen))
+                // PID Tuning Window
+                bool pidOpen = windows[0]->IsOpen();
+                if (ImGui::MenuItem("PID Tuning", nullptr, pidOpen))
                 {
-                    if (isOpen)
+                    if (pidOpen)
                         windows[0]->Hide();
                     else
                         windows[0]->Show();
+                }
+
+                // Lead/Lag Tuning Window
+                bool leadlagOpen = windows[1]->IsOpen();
+                if (ImGui::MenuItem("Lead/Lag Compensator", nullptr, leadlagOpen))
+                {
+                    if (leadlagOpen)
+                        windows[1]->Hide();
+                    else
+                        windows[1]->Show();
                 }
 
                 ImGui::Separator();

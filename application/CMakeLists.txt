@@ -8,6 +8,7 @@ add_library(app_gui STATIC
     ${CMAKE_SOURCE_DIR}/application/app_gui.cpp
     ${CMAKE_SOURCE_DIR}/application/imgui_layer.cpp
     ${CMAKE_SOURCE_DIR}/application/pid_tuning_window.cpp
+    ${CMAKE_SOURCE_DIR}/application/leadlag_tuning_window.cpp
 )
 
 target_include_directories(app_gui 

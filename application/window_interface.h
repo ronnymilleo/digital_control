@@ -26,5 +26,5 @@ class IWindowInterface
   protected:
     std::string m_title;
     bool m_open = false;
-    ImGuiWindowFlags_ m_flags = ImGuiWindowFlags_None;
+    ImGuiWindowFlags m_flags = ImGuiWindowFlags_None;
 };
