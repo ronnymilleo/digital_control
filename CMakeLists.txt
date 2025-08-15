@@ -30,6 +30,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # =============================================================================
 # Options
 # =============================================================================
+
 option(DC_BUILD_TESTS "Build unit tests" OFF)
 
 # =============================================================================
@@ -156,17 +157,10 @@ target_link_libraries(digital_control_lib
 # =============================================================================
 # Tests
 # =============================================================================
+
 if(DC_BUILD_TESTS)
-    enable_testing()
-    # Bring in vendored GoogleTest
     add_subdirectory(vendor/googletest)
-    add_executable(digital_control_tests
-        tests/test_pid.cpp
-    )
-    add_dependencies(digital_control_tests format)
-    target_include_directories(digital_control_tests PRIVATE ${CMAKE_SOURCE_DIR}/core)
-    target_link_libraries(digital_control_tests PRIVATE gtest_main digital_control_lib)
-    add_test(NAME digital_control_tests COMMAND digital_control_tests)
+    add_subdirectory(tests)
 endif()
 
 # =============================================================================

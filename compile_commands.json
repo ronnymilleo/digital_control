@@ -286,5 +286,35 @@
   "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -DSPDLOG_COMPILED_LIB -ID:/Develop/cpp/digital_control/application -ID:/Develop/cpp/digital_control/core -ID:/Develop/cpp/digital_control/vendor/stb -ID:/Develop/cpp/digital_control/vendor/imgui -ID:/Develop/cpp/digital_control/vendor/imgui/backends -ID:/Develop/cpp/digital_control/vendor/glfw/include -ID:/Develop/cpp/digital_control/vendor/implot -ID:/Develop/cpp/digital_control -ID:/Develop/cpp/digital_control/vendor/nlohmann_json/include -ID:/Develop/cpp/digital_control/vendor/spdlog/include -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt @application\\CMakeFiles\\app_gui.dir\\pid_tuning_window.cpp.obj.modmap -o application\\CMakeFiles\\app_gui.dir\\pid_tuning_window.cpp.obj -c D:\\Develop\\cpp\\digital_control\\application\\pid_tuning_window.cpp",
   "file": "D:\\Develop\\cpp\\digital_control\\application\\pid_tuning_window.cpp",
   "output": "application\\CMakeFiles\\app_gui.dir\\pid_tuning_window.cpp.obj"
+},
+{
+  "directory": "D:/Develop/cpp/digital_control/build/clang-release",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -ID:/Develop/cpp/digital_control/vendor/googletest/googlemock/include -ID:/Develop/cpp/digital_control/vendor/googletest/googlemock -isystem D:/Develop/cpp/digital_control/vendor/googletest/googletest/include -isystem D:/Develop/cpp/digital_control/vendor/googletest/googletest -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt -Wall -Wshadow -Wconversion -Wundef -DGTEST_HAS_PTHREAD=0 -fexceptions -W -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wswitch -Wunused-parameter -Wcast-align -Winline -Wredundant-decls -Wchar-subscripts -o vendor\\googletest\\googlemock\\CMakeFiles\\gmock.dir\\src\\gmock-all.cc.obj -c D:\\Develop\\cpp\\digital_control\\vendor\\googletest\\googlemock\\src\\gmock-all.cc",
+  "file": "D:\\Develop\\cpp\\digital_control\\vendor\\googletest\\googlemock\\src\\gmock-all.cc",
+  "output": "vendor\\googletest\\googlemock\\CMakeFiles\\gmock.dir\\src\\gmock-all.cc.obj"
+},
+{
+  "directory": "D:/Develop/cpp/digital_control/build/clang-release",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -isystem D:/Develop/cpp/digital_control/vendor/googletest/googlemock/include -isystem D:/Develop/cpp/digital_control/vendor/googletest/googlemock -isystem D:/Develop/cpp/digital_control/vendor/googletest/googletest/include -isystem D:/Develop/cpp/digital_control/vendor/googletest/googletest -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt -Wall -Wshadow -Wconversion -Wundef -DGTEST_HAS_PTHREAD=0 -fexceptions -W -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wswitch -Wunused-parameter -Wcast-align -Winline -Wredundant-decls -Wchar-subscripts -o vendor\\googletest\\googlemock\\CMakeFiles\\gmock_main.dir\\src\\gmock_main.cc.obj -c D:\\Develop\\cpp\\digital_control\\vendor\\googletest\\googlemock\\src\\gmock_main.cc",
+  "file": "D:\\Develop\\cpp\\digital_control\\vendor\\googletest\\googlemock\\src\\gmock_main.cc",
+  "output": "vendor\\googletest\\googlemock\\CMakeFiles\\gmock_main.dir\\src\\gmock_main.cc.obj"
+},
+{
+  "directory": "D:/Develop/cpp/digital_control/build/clang-release",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -ID:/Develop/cpp/digital_control/vendor/googletest/googletest/include -ID:/Develop/cpp/digital_control/vendor/googletest/googletest -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt -Wall -Wshadow -Wconversion -Wundef -DGTEST_HAS_PTHREAD=0 -fexceptions -W -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wswitch -Wunused-parameter -Wcast-align -Winline -Wredundant-decls -Wchar-subscripts -o vendor\\googletest\\googletest\\CMakeFiles\\gtest.dir\\src\\gtest-all.cc.obj -c D:\\Develop\\cpp\\digital_control\\vendor\\googletest\\googletest\\src\\gtest-all.cc",
+  "file": "D:\\Develop\\cpp\\digital_control\\vendor\\googletest\\googletest\\src\\gtest-all.cc",
+  "output": "vendor\\googletest\\googletest\\CMakeFiles\\gtest.dir\\src\\gtest-all.cc.obj"
+},
+{
+  "directory": "D:/Develop/cpp/digital_control/build/clang-release",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -isystem D:/Develop/cpp/digital_control/vendor/googletest/googletest/include -isystem D:/Develop/cpp/digital_control/vendor/googletest/googletest -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt -Wall -Wshadow -Wconversion -Wundef -DGTEST_HAS_PTHREAD=0 -fexceptions -W -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wswitch -Wunused-parameter -Wcast-align -Winline -Wredundant-decls -Wchar-subscripts -o vendor\\googletest\\googletest\\CMakeFiles\\gtest_main.dir\\src\\gtest_main.cc.obj -c D:\\Develop\\cpp\\digital_control\\vendor\\googletest\\googletest\\src\\gtest_main.cc",
+  "file": "D:\\Develop\\cpp\\digital_control\\vendor\\googletest\\googletest\\src\\gtest_main.cc",
+  "output": "vendor\\googletest\\googletest\\CMakeFiles\\gtest_main.dir\\src\\gtest_main.cc.obj"
+},
+{
+  "directory": "D:/Develop/cpp/digital_control/build/clang-release",
+  "command": "C:\\PROGRA~1\\MICROS~4\\2022\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\CLANG_~1.EXE -ID:/Develop/cpp/digital_control/core -ID:/Develop/cpp/digital_control -ID:/Develop/cpp/digital_control/vendor/nlohmann_json/include -isystem D:/Develop/cpp/digital_control/vendor/googletest/googletest/include -isystem D:/Develop/cpp/digital_control/vendor/googletest/googletest -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt @tests\\CMakeFiles\\digital_control_tests.dir\\test_pid.cpp.obj.modmap -o tests\\CMakeFiles\\digital_control_tests.dir\\test_pid.cpp.obj -c D:\\Develop\\cpp\\digital_control\\tests\\test_pid.cpp",
+  "file": "D:\\Develop\\cpp\\digital_control\\tests\\test_pid.cpp",
+  "output": "tests\\CMakeFiles\\digital_control_tests.dir\\test_pid.cpp.obj"
 }
 ]
