@@ -79,7 +79,7 @@ GLint AppGUI::Init()
     // Load and set window icon if available
     LoadAndSetIcon();
 
-    ImGuiLayer::Init(m_Window);
+    ImGuiLayer::Init(m_Window, glsl_version);
 
     return 0;
 }

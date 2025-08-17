@@ -12,7 +12,7 @@ class ImGuiLayer
     ImGuiLayer() = default;
     ~ImGuiLayer() = default;
 
-    static void Init(GLFWwindow *window);
+    static void Init(GLFWwindow *window, const char *glsl_version);
     static void BeginFrame();
     static void EnableDockSpace();
     static void EndFrame();

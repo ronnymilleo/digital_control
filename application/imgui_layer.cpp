@@ -1,6 +1,6 @@
 #include "imgui_layer.h"
 
-void ImGuiLayer::Init(GLFWwindow *window)
+void ImGuiLayer::Init(GLFWwindow *window, const char *glsl_version)
 {
     // Setup Dear ImGui context
     IMGUI_CHECKVERSION();
@@ -18,7 +18,7 @@ void ImGuiLayer::Init(GLFWwindow *window)
 
     // Setup Platform/Renderer backends
     ImGui_ImplGlfw_InitForOpenGL(window, true);
-    ImGui_ImplOpenGL3_Init("#version 130");
+    ImGui_ImplOpenGL3_Init(glsl_version);
 }
 
 void ImGuiLayer::BeginFrame()
