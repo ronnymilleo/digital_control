@@ -123,7 +123,7 @@ add_executable(imdigitalcontrol
 target_include_directories(imdigitalcontrol
     PRIVATE
         ${CMAKE_SOURCE_DIR}/application
-        ${CMAKE_SOURCE_DIR}/core
+        ${CMAKE_SOURCE_DIR}/library/include
 )
 
 target_link_libraries(imdigitalcontrol 
