@@ -1,6 +1,6 @@
 #include "pid_tuning_window.h"
-#include "../core/pid.h"
-#include "../core/plant.h"
+#include <pid.h>
+#include <plant.h>
 #include <algorithm>
 #include <cmath>
 #include <implot.h>

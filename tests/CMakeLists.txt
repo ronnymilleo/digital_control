@@ -17,13 +17,13 @@ add_dependencies(digital_control_tests format)
 
 target_include_directories(digital_control_tests 
     PRIVATE
-        ${CMAKE_SOURCE_DIR}/core
+        ${CMAKE_SOURCE_DIR}/library/include
 )
 
 target_link_libraries(digital_control_tests 
     PRIVATE 
         gtest_main 
-        digital_control_lib
+        digital_control
 )
 
 add_test(NAME digital_control_tests COMMAND digital_control_tests)

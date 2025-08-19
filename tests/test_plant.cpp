@@ -28,7 +28,7 @@ TEST(FirstOrderPlant, StepResponse)
     DigitalControl::FirstOrderPlant plant(2.0, 1.0, 0.0);
 
     // Step input
-    const double u = 1.0;
+    const double u  = 1.0;
     const double dt = 0.01;
 
     // Initial output should be y0
@@ -50,13 +50,13 @@ TEST(FirstOrderPlant, StepResponse)
 TEST(FirstOrderPlant, TimeConstantBehavior)
 {
     // After one time constant, output should be ~63.2% of final value
-    const double K = 3.0;
-    const double tau = 2.0;
+    const double                    K   = 3.0;
+    const double                    tau = 2.0;
     DigitalControl::FirstOrderPlant plant(K, tau, 0.0);
 
-    const double u = 1.0;
-    const double dt = 0.01;
-    const int steps = static_cast<int>(tau / dt);
+    const double u     = 1.0;
+    const double dt    = 0.01;
+    const int    steps = static_cast<int>(tau / dt);
 
     for (int i = 0; i < steps; ++i)
     {
@@ -113,7 +113,7 @@ TEST(FirstOrderPlant, InvalidInputHandling)
 
 TEST(FirstOrderPlant, ResetBehavior)
 {
-    const double y0 = 3.14;
+    const double                    y0 = 3.14;
     DigitalControl::FirstOrderPlant plant(1.0, 1.0, y0);
 
     // Step away from initial condition
@@ -160,13 +160,13 @@ TEST(SecondOrderPlant, ConstructorValidation)
 TEST(SecondOrderPlant, SteadyStateResponse)
 {
     // Steady state: x_ss = (K/k) * u
-    const double m = 1.0;
-    const double b = 1.0;
-    const double k = 2.0;
-    const double K = 3.0;
+    const double                     m = 1.0;
+    const double                     b = 1.0;
+    const double                     k = 2.0;
+    const double                     K = 3.0;
     DigitalControl::SecondOrderPlant plant(m, b, k, K, 0.0, 0.0);
 
-    const double u = 2.0;
+    const double u           = 2.0;
     const double expected_ss = (K / k) * u; // 3/2 * 2 = 3
 
     // Run to steady state (longer simulation for better convergence)
@@ -182,14 +182,14 @@ TEST(SecondOrderPlant, SteadyStateResponse)
 TEST(SecondOrderPlant, UnderdampedOscillation)
 {
     // Underdamped system (zeta < 1)
-    const double m = 1.0;
-    const double k = 4.0;
-    const double b = 0.2; // Light damping for oscillation
+    const double                     m = 1.0;
+    const double                     k = 4.0;
+    const double                     b = 0.2; // Light damping for oscillation
     DigitalControl::SecondOrderPlant plant(m, b, k, 1.0, 0.0, 0.0);
 
     // Apply step input
-    double max_pos = 0.0;
-    bool found_overshoot = false;
+    double max_pos         = 0.0;
+    bool   found_overshoot = false;
 
     for (int i = 0; i < 1000; ++i)
     {
@@ -211,14 +211,14 @@ TEST(SecondOrderPlant, UnderdampedOscillation)
 TEST(SecondOrderPlant, CriticallyDamped)
 {
     // Critically damped: b = 2*sqrt(m*k)
-    const double m = 1.0;
-    const double k = 4.0;
-    const double b = 2.0 * std::sqrt(m * k); // = 4.0
+    const double                     m = 1.0;
+    const double                     k = 4.0;
+    const double                     b = 2.0 * std::sqrt(m * k); // = 4.0
     DigitalControl::SecondOrderPlant plant(m, b, k, 1.0, 0.0, 0.0);
 
     // Should approach steady state without overshoot
-    double prev = 0.0;
-    bool monotonic = true;
+    double prev      = 0.0;
+    bool   monotonic = true;
 
     for (int i = 0; i < 1000; ++i)
     {
@@ -235,8 +235,8 @@ TEST(SecondOrderPlant, CriticallyDamped)
 
 TEST(SecondOrderPlant, InitialConditions)
 {
-    const double x0 = 2.0;
-    const double v0 = -1.0;
+    const double                     x0 = 2.0;
+    const double                     v0 = -1.0;
     DigitalControl::SecondOrderPlant plant(1.0, 0.5, 4.0, 1.0, x0, v0);
 
     EXPECT_EQ(plant.get_position(), x0);
@@ -267,8 +267,8 @@ TEST(SecondOrderPlant, InvalidInputHandling)
 
 TEST(SecondOrderPlant, ResetBehavior)
 {
-    const double x0 = 1.5;
-    const double v0 = -0.5;
+    const double                     x0 = 1.5;
+    const double                     v0 = -0.5;
     DigitalControl::SecondOrderPlant plant(1.0, 0.5, 4.0, 1.0, x0, v0);
 
     // Step away from initial conditions
@@ -344,7 +344,7 @@ TEST(PlantFactory, FirstOrderFactory)
     EXPECT_EQ(plant->get_initial_value(), 1.0);
 
     // Test polymorphic behavior
-    DigitalControl::IPlant *base = plant.get();
+    DigitalControl::IPlant* base = plant.get();
     EXPECT_EQ(base->get_output(), 1.0);
     base->step(1.0, 0.01);
     EXPECT_NE(base->get_output(), 1.0);

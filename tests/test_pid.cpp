@@ -99,8 +99,8 @@ TEST(PID, ExceptionOnInvalidGains)
 TEST(Plant, FirstOrderStepsTowardKTimesU)
 {
     DigitalControl::FirstOrderPlant plant(2.0, 1.0, 0.0);
-    const double dt = 0.01;
-    const double u = 1.0;
+    const double                    dt = 0.01;
+    const double                    u  = 1.0;
     // Over time, y should approach K*u = 2.0
     double y = 0.0;
     for (int k = 0; k < 1000; ++k)
@@ -113,14 +113,14 @@ TEST(Plant, FirstOrderStepsTowardKTimesU)
 TEST(Plant, SecondOrderConvergesToKOverKspringTimesU)
 {
     // For second-order: steady-state x_ss = (K / k) * u
-    const double m = 1.0;
-    const double b = 0.8;
-    const double kspring = 5.0;
-    const double K = 2.0;
+    const double                     m       = 1.0;
+    const double                     b       = 0.8;
+    const double                     kspring = 5.0;
+    const double                     K       = 2.0;
     DigitalControl::SecondOrderPlant plant(m, b, kspring, K, 0.0, 0.0);
 
-    const double dt = 0.001; // smaller step for better integration
-    const double u = 1.0;
+    const double dt       = 0.001; // smaller step for better integration
+    const double u        = 1.0;
     const double expected = (K / kspring) * u; // = 0.4
 
     double y = 0.0;

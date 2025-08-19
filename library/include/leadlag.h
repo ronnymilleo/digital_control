@@ -19,19 +19,19 @@ namespace DigitalControl
  */
 class LeadLag : public Controller
 {
-  public:
+public:
     // Constructors and destructor
     LeadLag();
     explicit LeadLag(double K, double zero, double pole);
     ~LeadLag() override = default;
 
     // Move semantics
-    LeadLag(LeadLag &&other) noexcept;
-    LeadLag &operator=(LeadLag &&other) noexcept;
+    LeadLag(LeadLag&& other) noexcept;
+    LeadLag& operator=(LeadLag&& other) noexcept;
 
     // Delete copy semantics
-    LeadLag(const LeadLag &) = delete;
-    LeadLag &operator=(const LeadLag &) = delete;
+    LeadLag(const LeadLag&)            = delete;
+    LeadLag& operator=(const LeadLag&) = delete;
 
     // Configuration methods
     void set_parameters(double K, double zero, double pole);
@@ -40,7 +40,7 @@ class LeadLag : public Controller
 
     // Control update
     double update(double y, double dt) override;
-    void reset() override;
+    void   reset() override;
 
     // Getters
     double get_setpoint() const override
@@ -89,9 +89,9 @@ class LeadLag : public Controller
     double get_magnitude_at_frequency(double omega) const;
 
     // Stream output for debugging
-    friend std::ostream &operator<<(std::ostream &os, const LeadLag &comp);
+    friend std::ostream& operator<<(std::ostream& os, const LeadLag& comp);
 
-  private:
+private:
     // Parameters
     double K_ = 1.0; // DC gain
     double z_ = 0.1; // Zero location (rad/s)
@@ -104,20 +104,20 @@ class LeadLag : public Controller
     double a1_ = 0.0;
 
     // State
-    double r_ = 0.0;          // setpoint
-    double e_prev_ = 0.0;     // previous error
-    double u_prev_ = 0.0;     // previous output (before saturation)
+    double r_          = 0.0; // setpoint
+    double e_prev_     = 0.0; // previous error
+    double u_prev_     = 0.0; // previous output (before saturation)
     double u_sat_prev_ = 0.0; // previous saturated output
 
     // Limits
     double umin_ = -1e9;
     double umax_ = 1e9;
 
-    bool first_ = true;
+    bool   first_   = true;
     double last_dt_ = 0.0; // Store last dt to detect changes
 
-    void compute_discrete_coefficients(double dt);
-    void swap(LeadLag &other) noexcept;
+    void   compute_discrete_coefficients(double dt);
+    void   swap(LeadLag& other) noexcept;
     double saturate(double u) const;
 };
 

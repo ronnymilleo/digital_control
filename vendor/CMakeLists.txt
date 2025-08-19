@@ -10,6 +10,7 @@ find_package(OpenGL REQUIRED)
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
 set(GLFW_LIBRARY_TYPE "STATIC" CACHE STRING "" FORCE)
 
+add_subdirectory(googletest)
 add_subdirectory(glfw)
 add_subdirectory(nlohmann_json)
 add_subdirectory(spdlog)

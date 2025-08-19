@@ -15,13 +15,13 @@ int main()
     try
     {
         // Simulation parameters
-        const double dt = 0.01;    // 10 ms
-        const double t_end = 10.0; // 10 seconds
-        const double r_step = 1.0; // desired setpoint
+        const double dt     = 0.01; // 10 ms
+        const double t_end  = 10.0; // 10 seconds
+        const double r_step = 1.0;  // desired setpoint
 
         // Load tuned gains from JSON if available, otherwise tune and save
-        nlohmann::json j;
-        const std::string json_path = "tuned_first_order.json";
+        nlohmann::json             j;
+        const std::string          json_path = "tuned_first_order.json";
         DigitalControl::TuneResult tuned{};
         if (std::filesystem::exists(json_path))
         {
@@ -29,16 +29,16 @@ int main()
             jf >> j;
             if (j.contains("kp") && j.contains("ki") && j.contains("kd"))
             {
-                tuned.kp = j["kp"].get<double>();
-                tuned.ki = j["ki"].get<double>();
-                tuned.kd = j["kd"].get<double>();
+                tuned.kp    = j["kp"].get<double>();
+                tuned.ki    = j["ki"].get<double>();
+                tuned.kd    = j["kd"].get<double>();
                 tuned.score = j.value("score", 0.0);
             }
             else
             {
                 auto factory = []() { return DigitalControl::make_first_order_plant(1.0, 1.0, 0.0); };
-                tuned = DigitalControl::auto_tune_pid_step_default(factory, r_step, dt, t_end, -10.0, 10.0, 0.5);
-                j = {{"kp", tuned.kp}, {"ki", tuned.ki}, {"kd", tuned.kd}, {"score", tuned.score}};
+                tuned        = DigitalControl::auto_tune_pid_step_default(factory, r_step, dt, t_end, -10.0, 10.0, 0.5);
+                j            = {{"kp", tuned.kp}, {"ki", tuned.ki}, {"kd", tuned.kd}, {"score", tuned.score}};
                 std::ofstream jo(json_path);
                 jo << j.dump(2) << std::endl;
             }
@@ -46,8 +46,8 @@ int main()
         else
         {
             auto factory = []() { return DigitalControl::make_first_order_plant(1.0, 1.0, 0.0); };
-            tuned = DigitalControl::auto_tune_pid_step_default(factory, r_step, dt, t_end, -10.0, 10.0, 0.5);
-            j = {{"kp", tuned.kp}, {"ki", tuned.ki}, {"kd", tuned.kd}, {"score", tuned.score}};
+            tuned        = DigitalControl::auto_tune_pid_step_default(factory, r_step, dt, t_end, -10.0, 10.0, 0.5);
+            j            = {{"kp", tuned.kp}, {"ki", tuned.ki}, {"kd", tuned.kd}, {"score", tuned.score}};
             std::ofstream jo(json_path);
             jo << j.dump(2) << std::endl;
         }
@@ -69,7 +69,7 @@ int main()
         for (double t = 0.0; t <= t_end + 1e-12; t += dt)
         {
             double u = pid->update(y, dt);
-            y = plant->step(u, dt);
+            y        = plant->step(u, dt);
             csv << std::fixed << std::setprecision(6) << t << "," << r_step << "," << y << "," << u << "\n";
         }
 
@@ -78,12 +78,12 @@ int main()
         std::cout << "Plant: " << *plant << "\n";
         std::cout << "Simulation complete. Output written to sim_pid_first_order.csv\n";
     }
-    catch (const DigitalControl::DigitalControlException &e)
+    catch (const DigitalControl::DigitalControlException& e)
     {
         std::cerr << "Control error: " << e.what() << std::endl;
         return 1;
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         std::cerr << "Error: " << e.what() << std::endl;
         return 1;

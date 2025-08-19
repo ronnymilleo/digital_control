@@ -45,16 +45,16 @@ set(DC_FORMAT_FILES
     ${CMAKE_SOURCE_DIR}/application/imgui_layer.h
     ${CMAKE_SOURCE_DIR}/application/leadlag_tuning_window.cpp
     ${CMAKE_SOURCE_DIR}/application/leadlag_tuning_window.h
-    ${CMAKE_SOURCE_DIR}/core/controller.h
-    ${CMAKE_SOURCE_DIR}/core/exceptions.h
-    ${CMAKE_SOURCE_DIR}/core/pid.h
-    ${CMAKE_SOURCE_DIR}/core/pid.cpp
-    ${CMAKE_SOURCE_DIR}/core/leadlag.h
-    ${CMAKE_SOURCE_DIR}/core/leadlag.cpp
-    ${CMAKE_SOURCE_DIR}/core/plant.h
-    ${CMAKE_SOURCE_DIR}/core/plant.cpp
-    ${CMAKE_SOURCE_DIR}/core/tuner.h
-    ${CMAKE_SOURCE_DIR}/core/tuner.cpp
+    ${CMAKE_SOURCE_DIR}/library/src/pid.cpp
+    ${CMAKE_SOURCE_DIR}/library/src/leadlag.cpp
+    ${CMAKE_SOURCE_DIR}/library/src/plant.cpp
+    ${CMAKE_SOURCE_DIR}/library/src/tuner.cpp
+    ${CMAKE_SOURCE_DIR}/library/include/controller.h
+    ${CMAKE_SOURCE_DIR}/library/include/exceptions.h
+    ${CMAKE_SOURCE_DIR}/library/include/pid.h
+    ${CMAKE_SOURCE_DIR}/library/include/leadlag.h
+    ${CMAKE_SOURCE_DIR}/library/include/plant.h
+    ${CMAKE_SOURCE_DIR}/library/include/tuner.h
     ${CMAKE_SOURCE_DIR}/examples/sim_pid_first_order.cpp
     ${CMAKE_SOURCE_DIR}/examples/sim_pid_second_order.cpp
     ${CMAKE_SOURCE_DIR}/examples/sim_leadlag_first_order.cpp
@@ -115,27 +115,27 @@ else()
     set(WINDOWS_RESOURCES "")
 endif()
 
-add_executable(digital_control
+add_executable(imdigitalcontrol
     ${CMAKE_SOURCE_DIR}/main.cpp
     ${WINDOWS_RESOURCES}
 )
 
-target_include_directories(digital_control
+target_include_directories(imdigitalcontrol
     PRIVATE
         ${CMAKE_SOURCE_DIR}/application
         ${CMAKE_SOURCE_DIR}/core
 )
 
-target_link_libraries(digital_control 
+target_link_libraries(imdigitalcontrol 
     PRIVATE 
         app_gui
 )
 
 # Copy assets folder to output directory after build
-add_custom_command(TARGET digital_control POST_BUILD
+add_custom_command(TARGET imdigitalcontrol POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
     ${CMAKE_SOURCE_DIR}/assets
-    $<TARGET_FILE_DIR:digital_control>/assets
+    $<TARGET_FILE_DIR:imdigitalcontrol>/assets
     COMMENT "Copying assets to output directory"
 )
 
@@ -143,45 +143,13 @@ add_custom_command(TARGET digital_control POST_BUILD
 # Library
 # =============================================================================
 
-add_library(digital_control_lib STATIC
-    ${CMAKE_SOURCE_DIR}/core/pid.cpp
-    ${CMAKE_SOURCE_DIR}/core/leadlag.cpp
-    ${CMAKE_SOURCE_DIR}/core/plant.cpp
-    ${CMAKE_SOURCE_DIR}/core/tuner.cpp
-)
-
-add_dependencies(digital_control_lib format)
-
-target_include_directories(digital_control_lib
-    PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/
-        ${CMAKE_CURRENT_SOURCE_DIR}/vendor/nlohmann_json/include
-)
-
-target_link_libraries(digital_control_lib
-    PUBLIC
-        nlohmann_json::nlohmann_json
-)
+add_subdirectory(library)
 
 # =============================================================================
 # Tests
 # =============================================================================
 
-if(DC_BUILD_TESTS)
-    enable_testing()
-    # Bring in vendored GoogleTest
-    add_subdirectory(vendor/googletest)
-    add_executable(digital_control_tests
-        tests/test_pid.cpp
-        tests/test_leadlag.cpp
-        tests/test_plant.cpp
-        tests/test_integration.cpp
-    )
-    add_dependencies(digital_control_tests format)
-    target_include_directories(digital_control_tests PRIVATE ${CMAKE_SOURCE_DIR}/core)
-    target_link_libraries(digital_control_tests PRIVATE gtest_main digital_control_lib)
-    add_test(NAME digital_control_tests COMMAND digital_control_tests)
-endif()
+add_subdirectory(tests)
 
 # =============================================================================
 # Summary

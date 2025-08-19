@@ -31,7 +31,7 @@ struct IPlant
  */
 class FirstOrderPlant : public IPlant
 {
-  public:
+public:
     constexpr explicit FirstOrderPlant(double K = 1.0, double tau = 1.0, double y0 = 0.0)
         : K_(K), tau_(tau), y0_(y0), y_(y0)
     {
@@ -84,9 +84,9 @@ class FirstOrderPlant : public IPlant
         return y0_;
     }
 
-    friend std::ostream &operator<<(std::ostream &os, const FirstOrderPlant &plant);
+    friend std::ostream& operator<<(std::ostream& os, const FirstOrderPlant& plant);
 
-  private:
+private:
     double K_;
     double tau_;
     double y0_;
@@ -100,7 +100,7 @@ class FirstOrderPlant : public IPlant
  */
 class SecondOrderPlant : public IPlant
 {
-  public:
+public:
     constexpr explicit SecondOrderPlant(double m = 1.0, double b = 0.5, double k = 4.0, double K = 1.0, double x0 = 0.0,
                                         double v0 = 0.0)
         : m_(m), b_(b), k_(k), K_(K), x0_(x0), v0_(v0), x_(x0), v_(v0)
@@ -171,9 +171,9 @@ class SecondOrderPlant : public IPlant
         return v_;
     }
 
-    friend std::ostream &operator<<(std::ostream &os, const SecondOrderPlant &plant);
+    friend std::ostream& operator<<(std::ostream& os, const SecondOrderPlant& plant);
 
-  private:
+private:
     double m_;
     double b_;
     double k_;

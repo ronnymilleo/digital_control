@@ -1,19 +1,19 @@
 #include "leadlag_tuning_window.h"
-#include "../core/leadlag.h"
-#include "../core/plant.h"
 #include <algorithm>
 #include <cmath>
 #include <complex>
 #include <implot.h>
+#include <leadlag.h>
 #include <memory>
 #include <numbers>
+#include <plant.h>
 #include <spdlog/spdlog.h>
 
 void LeadLagTuningWindow::Create()
 {
     // Initialize window properties
     m_title = "Lead/Lag Compensator Tuning";
-    m_open = true;
+    m_open  = true;
     m_flags = ImGuiWindowFlags_None;
 
     // Initialize with default lead compensator parameters
@@ -44,19 +44,19 @@ void LeadLagTuningWindow::DrawContents()
     if (ImGui::RadioButton("Lead", m_compensator_type == CompensatorType::Lead))
     {
         m_compensator_type = CompensatorType::Lead;
-        m_needs_update = true;
+        m_needs_update     = true;
     }
     ImGui::SameLine();
     if (ImGui::RadioButton("Lag", m_compensator_type == CompensatorType::Lag))
     {
         m_compensator_type = CompensatorType::Lag;
-        m_needs_update = true;
+        m_needs_update     = true;
     }
     ImGui::SameLine();
     if (ImGui::RadioButton("Lead-Lag", m_compensator_type == CompensatorType::LeadLag))
     {
         m_compensator_type = CompensatorType::LeadLag;
-        m_needs_update = true;
+        m_needs_update     = true;
     }
 
     ImGui::Spacing();
@@ -107,13 +107,13 @@ void LeadLagTuningWindow::DrawContents()
     ImGui::Text("Plant Type:");
     if (ImGui::RadioButton("First Order", m_plant_type == PlantType::FirstOrder))
     {
-        m_plant_type = PlantType::FirstOrder;
+        m_plant_type   = PlantType::FirstOrder;
         m_needs_update = true;
     }
     ImGui::SameLine();
     if (ImGui::RadioButton("Second Order", m_plant_type == PlantType::SecondOrder))
     {
-        m_plant_type = PlantType::SecondOrder;
+        m_plant_type   = PlantType::SecondOrder;
         m_needs_update = true;
     }
 
@@ -154,7 +154,7 @@ void LeadLagTuningWindow::DrawContents()
 
         // Show damping ratio
         float omega_n = std::sqrt(m_plant_stiffness / m_plant_mass);
-        float zeta = m_plant_damping / (2.0f * std::sqrt(m_plant_mass * m_plant_stiffness));
+        float zeta    = m_plant_damping / (2.0f * std::sqrt(m_plant_mass * m_plant_stiffness));
         ImGui::Text("Natural Frequency: %.2f rad/s", omega_n);
         ImGui::Text("Damping Ratio: %.3f", zeta);
         if (zeta < 1.0f)
@@ -228,10 +228,10 @@ void LeadLagTuningWindow::DrawContents()
         m_leadlag_params.gain = 1.0f;
         m_leadlag_params.zero = 1.0f;
         m_leadlag_params.pole = 10.0f;
-        m_plant_gain = 1.0f;
+        m_plant_gain          = 1.0f;
         m_plant_time_constant = 1.0f;
-        m_setpoint = 1.0f;
-        m_needs_update = true;
+        m_setpoint            = 1.0f;
+        m_needs_update        = true;
         spdlog::info("Lead/Lag parameters reset to defaults");
     }
 
@@ -358,7 +358,7 @@ void LeadLagTuningWindow::SimulateStepResponse()
             break;
         }
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         spdlog::error("Failed to create compensator: {}", e.what());
         // Create a default compensator as fallback
@@ -376,13 +376,13 @@ void LeadLagTuningWindow::SimulateStepResponse()
 
     if (m_plant_type == PlantType::FirstOrder)
     {
-        plant = DigitalControl::make_first_order_plant(m_plant_gain, m_plant_time_constant);
+        plant          = DigitalControl::make_first_order_plant(m_plant_gain, m_plant_time_constant);
         openloop_plant = DigitalControl::make_first_order_plant(m_plant_gain, m_plant_time_constant);
     }
     else
     {
-        plant = DigitalControl::make_second_order_plant(m_plant_mass, m_plant_damping, m_plant_stiffness,
-                                                        m_plant_input_gain);
+        plant          = DigitalControl::make_second_order_plant(m_plant_mass, m_plant_damping, m_plant_stiffness,
+                                                                 m_plant_input_gain);
         openloop_plant = DigitalControl::make_second_order_plant(m_plant_mass, m_plant_damping, m_plant_stiffness,
                                                                  m_plant_input_gain);
     }
@@ -391,7 +391,7 @@ void LeadLagTuningWindow::SimulateStepResponse()
     compensator->set_setpoint(m_setpoint);
 
     // Simulation loop
-    float time = 0.0f;
+    float     time      = 0.0f;
     const int num_steps = static_cast<int>(m_simulation_time / m_time_step);
 
     for (int i = 0; i <= num_steps; ++i)
@@ -422,18 +422,18 @@ void LeadLagTuningWindow::SimulateStepResponse()
     }
 }
 
-void LeadLagTuningWindow::CalculatePerformanceMetrics(float &rise_time, float &settling_time, float &overshoot)
+void LeadLagTuningWindow::CalculatePerformanceMetrics(float& rise_time, float& settling_time, float& overshoot)
 {
     if (m_output_data.empty())
     {
-        rise_time = 0.0f;
+        rise_time     = 0.0f;
         settling_time = 0.0f;
-        overshoot = 0.0f;
+        overshoot     = 0.0f;
         return;
     }
 
     // Calculate rise time (10% to 90% of setpoint)
-    float ten_percent = 0.1f * m_setpoint;
+    float ten_percent    = 0.1f * m_setpoint;
     float ninety_percent = 0.9f * m_setpoint;
 
     int rise_start = -1, rise_end = -1;
@@ -472,7 +472,7 @@ void LeadLagTuningWindow::CalculatePerformanceMetrics(float &rise_time, float &s
 
     // Calculate settling time (within 2% of setpoint)
     float settling_band = 0.02f * m_setpoint;
-    settling_time = -1.0f;
+    settling_time       = -1.0f;
 
     // Search backwards from the end
     for (int i = m_output_data.size() - 1; i >= 0; --i)
@@ -513,8 +513,8 @@ void LeadLagTuningWindow::DrawBodePlot()
 
         float freq_min = frequencies.front();
         float freq_max = frequencies.back();
-        float mag_min = *std::min_element(magnitudes_db.begin(), magnitudes_db.end()) - 5.0f;
-        float mag_max = *std::max_element(magnitudes_db.begin(), magnitudes_db.end()) + 5.0f;
+        float mag_min  = *std::min_element(magnitudes_db.begin(), magnitudes_db.end()) - 5.0f;
+        float mag_max  = *std::max_element(magnitudes_db.begin(), magnitudes_db.end()) + 5.0f;
 
         ImPlot::SetupAxesLimits(freq_min, freq_max, mag_min, mag_max);
 
@@ -542,8 +542,8 @@ void LeadLagTuningWindow::DrawBodePlot()
     }
 }
 
-void LeadLagTuningWindow::CalculateFrequencyResponse(std::vector<float> &frequencies, std::vector<float> &magnitudes_db,
-                                                     std::vector<float> &phases_deg)
+void LeadLagTuningWindow::CalculateFrequencyResponse(std::vector<float>& frequencies, std::vector<float>& magnitudes_db,
+                                                     std::vector<float>& phases_deg)
 {
     frequencies.clear();
     magnitudes_db.clear();
@@ -551,23 +551,23 @@ void LeadLagTuningWindow::CalculateFrequencyResponse(std::vector<float> &frequen
 
     // Generate logarithmically spaced frequencies
     const int num_points = 100;
-    float freq_min = 0.01f;
-    float freq_max = 100.0f;
+    float     freq_min   = 0.01f;
+    float     freq_max   = 100.0f;
 
     for (int i = 0; i < num_points; ++i)
     {
-        float t = static_cast<float>(i) / (num_points - 1);
+        float t    = static_cast<float>(i) / (num_points - 1);
         float freq = freq_min * std::pow(freq_max / freq_min, t);
         frequencies.push_back(freq);
 
         // Calculate complex response G(jw) = K * (jw + z) / (jw + p)
         std::complex<float> jw(0.0f, freq);
-        std::complex<float> numerator = m_leadlag_params.gain * (jw + m_leadlag_params.zero);
+        std::complex<float> numerator   = m_leadlag_params.gain * (jw + m_leadlag_params.zero);
         std::complex<float> denominator = jw + m_leadlag_params.pole;
-        std::complex<float> response = numerator / denominator;
+        std::complex<float> response    = numerator / denominator;
 
         // Calculate magnitude in dB
-        float magnitude = std::abs(response);
+        float magnitude    = std::abs(response);
         float magnitude_db = 20.0f * std::log10(magnitude);
         magnitudes_db.push_back(magnitude_db);
 

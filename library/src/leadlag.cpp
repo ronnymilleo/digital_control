@@ -27,12 +27,12 @@ LeadLag::LeadLag(double K, double zero, double pole) : K_(K), z_(zero), p_(pole)
     }
 }
 
-LeadLag::LeadLag(LeadLag &&other) noexcept
+LeadLag::LeadLag(LeadLag&& other) noexcept
 {
     swap(other);
 }
 
-LeadLag &LeadLag::operator=(LeadLag &&other) noexcept
+LeadLag& LeadLag::operator=(LeadLag&& other) noexcept
 {
     if (this != &other)
     {
@@ -41,7 +41,7 @@ LeadLag &LeadLag::operator=(LeadLag &&other) noexcept
     return *this;
 }
 
-void LeadLag::swap(LeadLag &other) noexcept
+void LeadLag::swap(LeadLag& other) noexcept
 {
     std::swap(K_, other.K_);
     std::swap(z_, other.z_);
@@ -114,7 +114,7 @@ void LeadLag::compute_discrete_coefficients(double dt)
     // Continuous: H(s) = K * (s + z) / (s + p)
     // Discrete:   H(z) = (b0 + b1*z^-1) / (a0 + a1*z^-1)
 
-    const double T = dt;
+    const double T  = dt;
     const double T2 = 2.0 / T;
 
     // Pre-warp the frequencies (optional, but improves accuracy)
@@ -166,12 +166,12 @@ double LeadLag::update(double y, double dt)
     u_prev_ = u;
 
     // Apply saturation
-    u = saturate(u);
+    u           = saturate(u);
     u_sat_prev_ = u;
 
     // Update state
     e_prev_ = e;
-    first_ = false;
+    first_  = false;
 
     if (!std::isfinite(u))
     {
@@ -183,11 +183,11 @@ double LeadLag::update(double y, double dt)
 
 void LeadLag::reset()
 {
-    e_prev_ = 0.0;
-    u_prev_ = 0.0;
+    e_prev_     = 0.0;
+    u_prev_     = 0.0;
     u_sat_prev_ = 0.0;
-    first_ = true;
-    last_dt_ = 0.0;
+    first_      = true;
+    last_dt_    = 0.0;
 }
 
 double LeadLag::saturate(double u) const
@@ -233,7 +233,7 @@ double LeadLag::get_magnitude_at_frequency(double omega) const
     return K_ * mag_zero / mag_pole;
 }
 
-std::ostream &operator<<(std::ostream &os, const LeadLag &comp)
+std::ostream& operator<<(std::ostream& os, const LeadLag& comp)
 {
     os << "LeadLag(K=" << comp.K_ << ", zero=" << comp.z_ << ", pole=" << comp.p_
        << ", type=" << (comp.is_lead() ? "lead" : (comp.is_lag() ? "lag" : "unity")) << ", limits=[" << comp.umin_

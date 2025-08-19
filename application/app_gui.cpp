@@ -7,12 +7,12 @@
 #include "stb_image.h"
 #include "stb_sprintf.h"
 
-static void glfw_error_callback(int error, const char *description)
+static void glfw_error_callback(int error, const char* description)
 {
     fprintf(stderr, "GLFW Error %d: %s\n", error, description);
 }
 
-AppGUI::AppGUI(const std::string &title, GLint width, GLint height) : m_Title(title), m_Width(width), m_Height(height)
+AppGUI::AppGUI(const std::string& title, GLint width, GLint height) : m_Title(title), m_Width(width), m_Height(height)
 {
     // Default icon path - can be overridden with SetIcon()
     m_IconPath = "assets/icon.png";
@@ -39,26 +39,26 @@ GLint AppGUI::Init()
     // Decide GL+GLSL versions
 #if defined(IMGUI_IMPL_OPENGL_ES2)
     // GL ES 2.0 + GLSL 100 (WebGL 1.0)
-    const char *glsl_version = "#version 100";
+    const char* glsl_version = "#version 100";
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
     glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
 #elif defined(IMGUI_IMPL_OPENGL_ES3)
     // GL ES 3.0 + GLSL 300 es (WebGL 2.0)
-    const char *glsl_version = "#version 300 es";
+    const char* glsl_version = "#version 300 es";
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
     glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
 #elif defined(__APPLE__)
     // GL 3.2 + GLSL 150
-    const char *glsl_version = "#version 150";
+    const char* glsl_version = "#version 150";
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); // 3.2+ only
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);           // Required on Mac
 #else
     // GL 3.0 + GLSL 130
-    const char *glsl_version = "#version 130";
+    const char* glsl_version = "#version 130";
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
     // glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);  // 3.2+ only
@@ -104,12 +104,12 @@ void AppGUI::SwapBuffers()
     glfwSwapBuffers(m_Window);
 }
 
-GLFWwindow *AppGUI::GetWindow() const
+GLFWwindow* AppGUI::GetWindow() const
 {
     return m_Window;
 }
 
-void AppGUI::SetIcon(const std::string &iconPath)
+void AppGUI::SetIcon(const std::string& iconPath)
 {
     m_IconPath = iconPath;
     if (m_Window)
@@ -127,8 +127,8 @@ void AppGUI::LoadAndSetIcon()
     }
 
     // Load icon using stb_image
-    int width, height, channels;
-    unsigned char *pixels = stbi_load(m_IconPath.c_str(), &width, &height, &channels, 4); // Force RGBA
+    int            width, height, channels;
+    unsigned char* pixels = stbi_load(m_IconPath.c_str(), &width, &height, &channels, 4); // Force RGBA
 
     if (!pixels)
     {
@@ -138,7 +138,7 @@ void AppGUI::LoadAndSetIcon()
 
     // Create GLFW image structure
     GLFWimage icon;
-    icon.width = width;
+    icon.width  = width;
     icon.height = height;
     icon.pixels = pixels;
 

@@ -1,4 +1,11 @@
 ---
 BasedOnStyle: Microsoft
-IndentWidth: 4
+AccessModifierOffset: -4
+PointerAlignment: Left
+ReferenceAlignment: Left
+AlignConsecutiveAssignments: true
+AlignConsecutiveBitFields: true
+AlignConsecutiveDeclarations: true
+AlignConsecutiveMacros: true
+ColumnLimit: 120
 ---

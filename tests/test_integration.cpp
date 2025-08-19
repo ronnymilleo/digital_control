@@ -15,10 +15,10 @@
 
 class IntegrationTest : public ::testing::Test
 {
-  protected:
+protected:
     // Simulation parameters
-    const double dt = 0.001;     // 1ms time step
-    const int max_steps = 10000; // 10 seconds max simulation
+    const double dt        = 0.001; // 1ms time step
+    const int    max_steps = 10000; // 10 seconds max simulation
 
     // Helper function to simulate control loop until steady state
     struct SimulationResult
@@ -27,10 +27,10 @@ class IntegrationTest : public ::testing::Test
         double steady_state_error;
         double overshoot;
         double settling_time;
-        bool converged;
+        bool   converged;
     };
 
-    SimulationResult simulate_to_steady_state(DigitalControl::Controller &controller, DigitalControl::IPlant &plant,
+    SimulationResult simulate_to_steady_state(DigitalControl::Controller& controller, DigitalControl::IPlant& plant,
                                               double setpoint, double tolerance = 0.02)
     {
         controller.set_setpoint(setpoint);
@@ -38,13 +38,13 @@ class IntegrationTest : public ::testing::Test
         plant.reset();
 
         SimulationResult result;
-        result.overshoot = 0.0;
+        result.overshoot     = 0.0;
         result.settling_time = 0.0;
-        result.converged = false;
+        result.converged     = false;
 
-        double max_output = 0.0;
-        int settling_step = 0;
-        bool in_band = false;
+        double max_output    = 0.0;
+        int    settling_step = 0;
+        bool   in_band       = false;
 
         for (int i = 0; i < max_steps; ++i)
         {
@@ -64,7 +64,7 @@ class IntegrationTest : public ::testing::Test
                 if (!in_band)
                 {
                     settling_step = i;
-                    in_band = true;
+                    in_band       = true;
                 }
             }
             else
@@ -84,10 +84,10 @@ class IntegrationTest : public ::testing::Test
             }
         }
 
-        result.final_output = plant.get_output();
+        result.final_output       = plant.get_output();
         result.steady_state_error = setpoint - result.final_output;
-        result.overshoot = ((max_output - setpoint) / setpoint) * 100.0;
-        result.settling_time = settling_step * dt;
+        result.overshoot          = ((max_output - setpoint) / setpoint) * 100.0;
+        result.settling_time      = settling_step * dt;
 
         return result;
     }
@@ -159,10 +159,10 @@ TEST_F(IntegrationTest, PID_SecondOrderPlant_CriticallyDamped)
     pid->set_output_limits(-10.0, 10.0);
 
     // Critically damped plant
-    const double m = 1.0;
-    const double k = 4.0;
-    const double b = 2.0 * std::sqrt(m * k);
-    auto plant = DigitalControl::make_second_order_plant(m, b, k, 1.0, 0.0, 0.0);
+    const double m     = 1.0;
+    const double k     = 4.0;
+    const double b     = 2.0 * std::sqrt(m * k);
+    auto         plant = DigitalControl::make_second_order_plant(m, b, k, 1.0, 0.0, 0.0);
 
     auto result = simulate_to_steady_state(*pid, *plant, 1.0);
 
@@ -183,7 +183,7 @@ TEST_F(IntegrationTest, PID_SecondOrderPlant_Underdamped)
     // Run simulation for a while
     pid->set_setpoint(1.0);
     double final_output = 0.0;
-    bool stable = true;
+    bool   stable       = true;
 
     for (int i = 0; i < 5000; ++i)
     {
@@ -211,14 +211,14 @@ TEST_F(IntegrationTest, LeadCompensator_FirstOrderPlant)
 {
     // Lead compensator alone typically has steady-state error
     // Just verify it moves toward setpoint and is stable
-    auto lead = DigitalControl::make_lead_compensator(10.0, 0.1, 1.0);
+    auto lead  = DigitalControl::make_lead_compensator(10.0, 0.1, 1.0);
     auto plant = DigitalControl::make_first_order_plant(1.0, 2.0, 0.0);
 
     lead->set_output_limits(-10.0, 10.0);
     lead->set_setpoint(1.0);
 
     double final_output = 0.0;
-    bool stable = true;
+    bool   stable       = true;
 
     for (int i = 0; i < 5000; ++i)
     {
@@ -241,7 +241,7 @@ TEST_F(IntegrationTest, LeadCompensator_FirstOrderPlant)
 TEST_F(IntegrationTest, LagCompensator_FirstOrderPlant)
 {
     // Lag compensator improves steady-state error
-    auto lag = DigitalControl::make_lag_compensator(100.0, 10.0, 0.1);
+    auto lag   = DigitalControl::make_lag_compensator(100.0, 10.0, 0.1);
     auto plant = DigitalControl::make_first_order_plant(1.0, 0.5, 0.0);
 
     lag->set_output_limits(-100.0, 100.0);
@@ -270,7 +270,7 @@ TEST_F(IntegrationTest, CascadedControl_LeadLagPID)
     double y = 0.0;
     for (int i = 0; i < max_steps; ++i)
     {
-        y = plant->get_output();
+        y        = plant->get_output();
         double u = pid->update(y, dt);
         plant->step(u, dt);
 
@@ -294,14 +294,14 @@ TEST_F(IntegrationTest, RobustnessToParameterVariation)
     pid->set_output_limits(-20.0, 20.0);                // Wider output limits
 
     // Test with different plant parameters
-    std::vector<double> gains = {0.5, 1.0, 2.0};
+    std::vector<double> gains          = {0.5, 1.0, 2.0};
     std::vector<double> time_constants = {0.5, 1.0, 2.0};
 
     for (double K : gains)
     {
         for (double tau : time_constants)
         {
-            auto plant = DigitalControl::make_first_order_plant(K, tau, 0.0);
+            auto plant  = DigitalControl::make_first_order_plant(K, tau, 0.0);
             auto result = simulate_to_steady_state(*pid, *plant, 1.0);
 
             // Controller should stabilize all parameter combinations
@@ -338,8 +338,8 @@ TEST_F(IntegrationTest, RampTracking)
     auto plant = DigitalControl::make_first_order_plant(1.0, 0.5, 0.0);
 
     // Track a ramp input
-    const double ramp_rate = 0.1; // units per second
-    double tracking_error = 0.0;
+    const double ramp_rate      = 0.1; // units per second
+    double       tracking_error = 0.0;
 
     for (int i = 0; i < 5000; ++i)
     {
@@ -369,11 +369,11 @@ TEST_F(IntegrationTest, SinusoidalTracking)
     // Track sinusoidal reference
     const double frequency = 0.1; // Hz
     const double amplitude = 1.0;
-    double max_error = 0.0;
+    double       max_error = 0.0;
 
     for (int i = 0; i < max_steps; ++i)
     {
-        double t = i * dt;
+        double t        = i * dt;
         double setpoint = amplitude * std::sin(2.0 * std::numbers::pi * frequency * t);
         pid->set_setpoint(setpoint);
 
@@ -421,8 +421,8 @@ TEST_F(IntegrationTest, ControllerComparison_StepResponse)
     plant2->reset();
 
     SimulationResult lead_result;
-    lead_result.converged = true;     // Assume convergence for lead compensator
-    lead_result.settling_time = 10.0; // Reasonable settling time
+    lead_result.converged          = true; // Assume convergence for lead compensator
+    lead_result.settling_time      = 10.0; // Reasonable settling time
     lead_result.steady_state_error = 0.0;
 
     // Run a basic simulation
@@ -433,7 +433,7 @@ TEST_F(IntegrationTest, ControllerComparison_StepResponse)
         plant2->step(u, dt);
     }
     lead_result.final_output = plant2->get_output();
-    auto lag_result = simulate_to_steady_state(*lag, *plant3, 1.0);
+    auto lag_result          = simulate_to_steady_state(*lag, *plant3, 1.0);
 
     // PID should have best overall performance
     EXPECT_TRUE(pid_result.converged);
@@ -455,7 +455,7 @@ TEST_F(IntegrationTest, ControllerComparison_StepResponse)
 TEST_F(IntegrationTest, VerySmallTimeStep)
 {
     const double small_dt = 1e-6;
-    auto pid = DigitalControl::make_pid(1.0, 0.5, 0.1);
+    auto         pid      = DigitalControl::make_pid(1.0, 0.5, 0.1);
     pid->set_output_limits(-10.0, 10.0); // Add output limits
     auto plant = DigitalControl::make_first_order_plant(1.0, 1.0, 0.0);
 
@@ -464,8 +464,8 @@ TEST_F(IntegrationTest, VerySmallTimeStep)
     bool stable = true;
     for (int i = 0; i < 10000; ++i)
     {
-        double y = plant->get_output();
-        double u = pid->update(y, small_dt);
+        double y     = plant->get_output();
+        double u     = pid->update(y, small_dt);
         double y_new = plant->step(u, small_dt);
 
         if (!std::isfinite(u) || !std::isfinite(y_new))
@@ -487,7 +487,7 @@ TEST_F(IntegrationTest, LongDurationSimulation)
 
     pid->set_setpoint(1.0);
 
-    bool stable = true;
+    bool   stable      = true;
     double last_output = 0.0;
 
     // Simulate for "1 hour" at 1ms timestep

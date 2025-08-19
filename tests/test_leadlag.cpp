@@ -297,7 +297,7 @@ TEST(LeadLag, MaximumPhaseFrequency)
     double phase_max = lead.get_phase_at_frequency(omega_max);
 
     // Check that this is indeed maximum by comparing to nearby frequencies
-    double phase_lower = lead.get_phase_at_frequency(omega_max * 0.8);
+    double phase_lower  = lead.get_phase_at_frequency(omega_max * 0.8);
     double phase_higher = lead.get_phase_at_frequency(omega_max * 1.2);
 
     EXPECT_GT(phase_max, phase_lower);
@@ -384,7 +384,7 @@ TEST(LeadLag, UnityGainAtCrossover)
     EXPECT_NEAR(phase, 0.0, 1e-10);
 
     // Magnitude should be constant K at all frequencies
-    double mag_low = unity.get_magnitude_at_frequency(0.01);
+    double mag_low  = unity.get_magnitude_at_frequency(0.01);
     double mag_high = unity.get_magnitude_at_frequency(100.0);
     EXPECT_NEAR(mag_low, 2.0, 1e-3);
     EXPECT_NEAR(mag_high, 2.0, 1e-3);
@@ -394,11 +394,11 @@ TEST(LeadLag, ExtremePoleZeroRatios)
 {
     // Very large pole/zero ratio (strong lead)
     DigitalControl::LeadLag strong_lead(1.0, 0.001, 1000.0);
-    double phase_max = strong_lead.get_phase_at_frequency(std::sqrt(0.001 * 1000.0));
+    double                  phase_max = strong_lead.get_phase_at_frequency(std::sqrt(0.001 * 1000.0));
     EXPECT_GT(phase_max, 1.5); // Should be close to π/2
 
     // Very large zero/pole ratio (strong lag)
     DigitalControl::LeadLag strong_lag(1.0, 1000.0, 0.001);
-    double phase_min = strong_lag.get_phase_at_frequency(std::sqrt(0.001 * 1000.0));
+    double                  phase_min = strong_lag.get_phase_at_frequency(std::sqrt(0.001 * 1000.0));
     EXPECT_LT(phase_min, -1.5); // Should be close to -π/2
 }

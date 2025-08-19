@@ -11,8 +11,8 @@ namespace DigitalControl
  */
 class DigitalControlException : public std::runtime_error
 {
-  public:
-    explicit DigitalControlException(const std::string &message) : std::runtime_error("DigitalControl: " + message)
+public:
+    explicit DigitalControlException(const std::string& message) : std::runtime_error("DigitalControl: " + message)
     {
     }
 };
@@ -22,8 +22,8 @@ class DigitalControlException : public std::runtime_error
  */
 class InvalidParameterException : public DigitalControlException
 {
-  public:
-    explicit InvalidParameterException(const std::string &message)
+public:
+    explicit InvalidParameterException(const std::string& message)
         : DigitalControlException("Invalid parameter: " + message)
     {
     }
@@ -34,8 +34,8 @@ class InvalidParameterException : public DigitalControlException
  */
 class NumericalException : public DigitalControlException
 {
-  public:
-    explicit NumericalException(const std::string &message) : DigitalControlException("Numerical error: " + message)
+public:
+    explicit NumericalException(const std::string& message) : DigitalControlException("Numerical error: " + message)
     {
     }
 };
@@ -45,8 +45,8 @@ class NumericalException : public DigitalControlException
  */
 class ConfigurationException : public DigitalControlException
 {
-  public:
-    explicit ConfigurationException(const std::string &message)
+public:
+    explicit ConfigurationException(const std::string& message)
         : DigitalControlException("Configuration error: " + message)
     {
     }

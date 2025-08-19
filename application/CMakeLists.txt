@@ -14,7 +14,7 @@ add_library(app_gui STATIC
 target_include_directories(app_gui 
     PUBLIC
         ${CMAKE_SOURCE_DIR}/application
-        ${CMAKE_SOURCE_DIR}/core
+        ${CMAKE_SOURCE_DIR}/library/include
         ${CMAKE_SOURCE_DIR}/vendor/stb
 )
 
@@ -22,7 +22,7 @@ target_link_libraries(app_gui
     PUBLIC 
         imgui
         implot
-        digital_control_lib
+        digital_control
         spdlog
 )
 

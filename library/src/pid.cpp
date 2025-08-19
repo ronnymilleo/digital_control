@@ -26,13 +26,13 @@ PID::PID(double kp, double ki, double kd) : kp_(kp), ki_(ki), kd_(kd)
 PID::~PID() = default;
 
 // Move constructor
-PID::PID(PID &&other) noexcept
+PID::PID(PID&& other) noexcept
 {
     swap(other);
 }
 
 // Move assignment operator
-PID &PID::operator=(PID &&other) noexcept
+PID& PID::operator=(PID&& other) noexcept
 {
     if (this != &other)
     {
@@ -42,7 +42,7 @@ PID &PID::operator=(PID &&other) noexcept
     return *this;
 }
 
-void PID::swap(PID &other) noexcept
+void PID::swap(PID& other) noexcept
 {
     std::swap(kp_, other.kp_);
     std::swap(ki_, other.ki_);
@@ -110,11 +110,11 @@ void PID::set_derivative_filter(double alpha)
 
 void PID::reset()
 {
-    integ_ = 0.0;
+    integ_  = 0.0;
     y_prev_ = 0.0;
     d_prev_ = 0.0;
     u_prev_ = 0.0;
-    first_ = true;
+    first_  = true;
 }
 
 double PID::update(double y, double dt)
@@ -152,7 +152,7 @@ double PID::update(double y, double dt)
         d_meas = (y_prev_ - y) / dt; // negative sign for derivative on measurement
     }
     const double D_unfiltered = kd_ * d_meas;
-    const double D = alpha_ * D_unfiltered + (1.0 - alpha_) * d_prev_;
+    const double D            = alpha_ * D_unfiltered + (1.0 - alpha_) * d_prev_;
 
     // Unsaturated output
     double u = P + integ_ + D;
@@ -178,12 +178,12 @@ double PID::update(double y, double dt)
     y_prev_ = y;
     d_prev_ = D;
     u_prev_ = u_sat;
-    first_ = false;
+    first_  = false;
 
     return u_sat;
 }
 
-std::ostream &operator<<(std::ostream &os, const PID &pid)
+std::ostream& operator<<(std::ostream& os, const PID& pid)
 {
     os << "PID{kp=" << pid.kp_ << ", ki=" << pid.ki_ << ", kd=" << pid.kd_ << ", r=" << pid.r_
        << ", u_prev=" << pid.u_prev_ << ", limits=[" << pid.umin_ << ", " << pid.umax_ << "]"

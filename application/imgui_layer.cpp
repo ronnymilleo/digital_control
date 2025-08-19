@@ -1,11 +1,11 @@
 #include "imgui_layer.h"
 
-void ImGuiLayer::Init(GLFWwindow *window, const char *glsl_version)
+void ImGuiLayer::Init(GLFWwindow* window, const char* glsl_version)
 {
     // Setup Dear ImGui context
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
-    ImGuiIO &io = ImGui::GetIO();
+    ImGuiIO& io = ImGui::GetIO();
     (void)io;
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard; // Enable Keyboard Controls
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;  // Enable Gamepad Controls
@@ -40,18 +40,18 @@ void ImGuiLayer::EndFrame()
     // (Platform functions may change the current OpenGL context, so we save/restore it to make it easier to paste this
     // code elsewhere.
     //  For this specific demo app we could also call glfwMakeContextCurrent(window) directly)
-    ImGuiIO &io = ImGui::GetIO();
+    ImGuiIO& io = ImGui::GetIO();
     (void)io;
     if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
     {
-        GLFWwindow *backup_current_context = glfwGetCurrentContext();
+        GLFWwindow* backup_current_context = glfwGetCurrentContext();
         ImGui::UpdatePlatformWindows();
         ImGui::RenderPlatformWindowsDefault();
         glfwMakeContextCurrent(backup_current_context);
     }
 }
 
-void ImGuiLayer::Render(GLFWwindow *window, ImVec4 &clear_color)
+void ImGuiLayer::Render(GLFWwindow* window, ImVec4& clear_color)
 {
     // Rendering
     ImGui::Render();
@@ -70,13 +70,13 @@ void ImGuiLayer::SetStyle()
     ImGui::StyleColorsDark();
     // ImGui::StyleColorsLight();
 
-    ImGuiIO &io = ImGui::GetIO();
+    ImGuiIO& io = ImGui::GetIO();
     (void)io;
 
     float main_scale = ImGui_ImplGlfw_GetContentScaleForMonitor(glfwGetPrimaryMonitor());
 
     // Setup scaling
-    ImGuiStyle &style = ImGui::GetStyle();
+    ImGuiStyle& style = ImGui::GetStyle();
     style.ScaleAllSizes(main_scale); // Bake a fixed style scale. (until we have a solution for dynamic style scaling,
                                      // changing this requires resetting Style + calling this again)
     style.FontScaleDpi = main_scale; // Set initial font scale. (using io.ConfigDpiScaleFonts=true makes this
@@ -91,7 +91,7 @@ void ImGuiLayer::SetStyle()
     // ones.
     if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
     {
-        style.WindowRounding = 0.0f;
+        style.WindowRounding              = 0.0f;
         style.Colors[ImGuiCol_WindowBg].w = 1.0f;
     }
 }

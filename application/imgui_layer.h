@@ -8,15 +8,15 @@
 
 class ImGuiLayer
 {
-  public:
-    ImGuiLayer() = default;
+public:
+    ImGuiLayer()  = default;
     ~ImGuiLayer() = default;
 
-    static void Init(GLFWwindow *window, const char *glsl_version);
+    static void Init(GLFWwindow* window, const char* glsl_version);
     static void BeginFrame();
     static void EnableDockSpace();
     static void EndFrame();
-    static void Render(GLFWwindow *window, ImVec4 &clear_color);
+    static void Render(GLFWwindow* window, ImVec4& clear_color);
     static void SetStyle();
     static void Shutdown();
 };

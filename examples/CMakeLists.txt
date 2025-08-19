@@ -17,12 +17,12 @@ add_dependencies(sim_pid_first_order format)
 
 target_include_directories(sim_pid_first_order
     PRIVATE
-        ${CMAKE_SOURCE_DIR}/core
+        ${CMAKE_SOURCE_DIR}/library/include
 )
 
 target_link_libraries(sim_pid_first_order
     PRIVATE
-        digital_control_lib
+        digital_control
 )
 
 set_target_properties(sim_pid_first_order PROPERTIES
@@ -42,12 +42,12 @@ add_dependencies(sim_pid_second_order format)
 
 target_include_directories(sim_pid_second_order
     PRIVATE
-        ${CMAKE_SOURCE_DIR}/core
+        ${CMAKE_SOURCE_DIR}/library/include
 )
 
 target_link_libraries(sim_pid_second_order
     PRIVATE
-        digital_control_lib
+        digital_control
 )
 
 set_target_properties(sim_pid_second_order PROPERTIES
@@ -67,12 +67,12 @@ add_dependencies(sim_leadlag_first_order format)
 
 target_include_directories(sim_leadlag_first_order
     PRIVATE
-        ${CMAKE_SOURCE_DIR}/core
+        ${CMAKE_SOURCE_DIR}/library/include
 )
 
 target_link_libraries(sim_leadlag_first_order
     PRIVATE
-        digital_control_lib
+        digital_control
 )
 
 set_target_properties(sim_leadlag_first_order PROPERTIES

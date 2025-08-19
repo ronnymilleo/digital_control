@@ -12,19 +12,19 @@ namespace DigitalControl
  */
 class PID : public Controller
 {
-  public:
+public:
     // Constructors and destructor
     PID();
     explicit PID(double kp, double ki, double kd);
     ~PID() override;
 
     // Move semantics
-    PID(PID &&other) noexcept;
-    PID &operator=(PID &&other) noexcept;
+    PID(PID&& other) noexcept;
+    PID& operator=(PID&& other) noexcept;
 
     // Delete copy semantics (controllers should not be copied casually)
-    PID(const PID &) = delete;
-    PID &operator=(const PID &) = delete;
+    PID(const PID&)            = delete;
+    PID& operator=(const PID&) = delete;
 
     // Configuration methods
     void set_gains(double kp, double ki, double kd);
@@ -34,7 +34,7 @@ class PID : public Controller
 
     // Control update
     double update(double y, double dt) override; // returns u
-    void reset() override;
+    void   reset() override;
 
     // Getters
     double get_setpoint() const override
@@ -75,29 +75,29 @@ class PID : public Controller
     }
 
     // Stream output for debugging
-    friend std::ostream &operator<<(std::ostream &os, const PID &pid);
+    friend std::ostream& operator<<(std::ostream& os, const PID& pid);
 
-  private:
+private:
     // Gains
     double kp_ = 0.0;
     double ki_ = 0.0;
     double kd_ = 0.0;
 
     // State
-    double r_ = 0.0;      // setpoint
-    double integ_ = 0.0;  // integral term state
+    double r_      = 0.0; // setpoint
+    double integ_  = 0.0; // integral term state
     double y_prev_ = 0.0; // previous measurement for derivative
     double d_prev_ = 0.0; // filtered derivative state
     double u_prev_ = 0.0; // last saturated output
 
     // Config
-    double umin_ = -1e9;
-    double umax_ = 1e9;
+    double umin_  = -1e9;
+    double umax_  = 1e9;
     double alpha_ = 1.0; // derivative filter blending factor
 
     bool first_ = true;
 
-    void swap(PID &other) noexcept;
+    void swap(PID& other) noexcept;
 };
 
 // Factory function

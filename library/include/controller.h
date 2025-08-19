@@ -8,7 +8,7 @@ namespace DigitalControl
  */
 class Controller
 {
-  public:
+public:
     virtual ~Controller() = default;
 
     // Set the desired reference/setpoint r[k]

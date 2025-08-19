@@ -7,7 +7,7 @@
 #include <vector>
 
 // Main code
-int main(int, char **)
+int main(int, char**)
 {
     // Create app with title - the icon will be loaded automatically from assets/icon.png
     AppGUI app("Digital Control System");
@@ -37,7 +37,7 @@ int main(int, char **)
     windows.push_back(std::move(leadlagWindow));
 
     bool show_demo_window = false; // Set to false by default
-    bool show_menu_bar = true;
+    bool show_menu_bar    = true;
 
     while (!app.ShouldClose())
     {
@@ -103,7 +103,7 @@ int main(int, char **)
         }
 
         // Render all window interfaces using a for loop
-        for (auto &window : windows)
+        for (auto& window : windows)
         {
             if (window->IsOpen())
             {
@@ -124,7 +124,7 @@ int main(int, char **)
     }
 
     // Clean up windows
-    for (auto &window : windows)
+    for (auto& window : windows)
     {
         window->Destroy();
     }
